@@ -1,17 +1,17 @@
 import * as React from 'react';
 import HomeContent from '../../components/HomeContent';
-import LoginForm from '../../components/LoginForm';
+import ContactForm from '../../components/ContactForm';
 
 interface Props {}
 
-export const Login: React.FunctionComponent<Props> = () => {
+export const Contact: React.FunctionComponent<Props> = () => {
   return (
     <>
       <HomeContent>
-        <LoginForm />
+        <ContactForm />
       </HomeContent>
     </>
   );
 };
 
-export default Login;
+export default Contact;

@@ -35,7 +35,7 @@ export const NavLink = styled(Link)`
   }
 `;
 
-export const LoginButton = styled(NavLink)`
+export const SubmitButton = styled(NavLink)`
   border: 2px solid ${props => props.theme.colors.onSecondary};
   list-text-style: none;
   padding: 0.5rem 1.5rem;

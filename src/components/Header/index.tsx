@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useLocation } from 'react-router-dom';
-import { Wrapper, Nav, MenuLeft, MenuRight, NavLinkList, NavLink, LoginButton } from './styles';
+import { Wrapper, Nav, MenuLeft, MenuRight, NavLinkList, NavLink, SubmitButton } from './styles';
 import ThemeWrapper from '../ThemeWrapper';
 import useIsDesktop from '../../hooks/useIsDesktop';
 
@@ -26,9 +26,7 @@ const Header: React.FC = () => {
           </NavLinkList>
           <MenuRight>
             <li>
-              <LoginButton to="/login">
-                {location.pathname === '/profile' ? 'Log Out' : 'Login'}
-              </LoginButton>
+              <SubmitButton to="/contact">Contact</SubmitButton>
             </li>
           </MenuRight>
         </Nav>
