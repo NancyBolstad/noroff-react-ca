@@ -10,8 +10,6 @@ export interface Props {
 }
 
 export const CardsList: React.FunctionComponent<Props> = ({ listTitle, cards }) => {
-  const PLACEHOLDER =
-    'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png';
   return (
     <Wrapper>
       {!!listTitle && <Typography element="h2" variant="h2" content={listTitle} align="center" />}
@@ -19,14 +17,12 @@ export const CardsList: React.FunctionComponent<Props> = ({ listTitle, cards }) 
         {(cards || []).map(card => (
           <Item
             key={card.id}
-            title={`Details about card ${card.name}`}
-            aria-label={`Details about card ${card.name}`}
+            href={`/details/${card.id}`}
+            title={`Go to details about card ${card.name}`}
+            aria-label={`Go to details about card ${card.name}`}
           >
             <Typography element="h3" variant="h3" content={card.name} bottom={22} top={16} />
-            <CardImage
-              src={card.background_image ? card.background_image : PLACEHOLDER}
-              alt={card.name}
-            />
+            {!!card.background_image && <CardImage src={card.background_image} alt={card.name} />}
             {!!card.released && (
               <Typography
                 element="span"
@@ -44,7 +40,7 @@ export const CardsList: React.FunctionComponent<Props> = ({ listTitle, cards }) 
                 bottom={16}
               />
             )}
-            <ButtonExternal href={`./${card.id}`} variant="primary" size="medium">
+            <ButtonExternal href={`/details/${card.id}`} variant="primary" size="medium">
               View Details
             </ButtonExternal>
           </Item>

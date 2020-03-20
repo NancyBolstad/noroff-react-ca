@@ -3,6 +3,7 @@ import Heading from '../../components/Heading';
 import HomeContent from '../../components/HomeContent';
 import CardsList from '../../components/CardsList';
 import { Root, Result } from '../../types/data';
+import { API_BASE_URL } from '../../util/constants';
 
 interface Props {}
 
@@ -10,7 +11,6 @@ export const Home: React.FunctionComponent<Props> = () => {
   const [data, setData] = React.useState<Result[]>([]);
 
   async function getAllCards() {
-    const API_BASE_URL: string = 'https://api.rawg.io/api/games';
     try {
       const response = await fetch(API_BASE_URL);
       const data: Root = await response.json();
@@ -25,7 +25,7 @@ export const Home: React.FunctionComponent<Props> = () => {
 
   React.useEffect(() => {
     getAllCards();
-  });
+  },[]);
 
   return (
     <>

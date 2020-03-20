@@ -11,6 +11,7 @@ interface ButtonProps {
 
 const Button = styled.button<ButtonProps>`
   display: flex;
+  width: 100%;
   justify-content: center;
   align-items: center;
   cursor: pointer;

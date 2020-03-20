@@ -28,13 +28,15 @@ const Layout: React.FunctionComponent<Props> = () => {
                 <Contact />
               </Suspense>
             </Route>
-            <Route path="/news">
+            <Route path="/details/:id">
               <Suspense fallback={<Loader />}>
                 <News />
               </Suspense>
             </Route>
             <Route path="/">
-              <Home />
+              <Suspense fallback={<Loader />}>
+                <Home />
+              </Suspense>
             </Route>
           </Switch>
         </div>
