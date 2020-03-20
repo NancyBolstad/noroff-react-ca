@@ -6,8 +6,8 @@ import Loader from '../components/Loader';
 import Home from './Home';
 
 const News = lazy(() => import('./News'));
-const Login = lazy(() => import('./Login'));
-const Profile = lazy(() => import('./Profile'));
+const Contact = lazy(() => import('./Contact'));
+const Success = lazy(() => import('./Success'));
 
 interface Props {}
 
@@ -18,14 +18,14 @@ const Layout: React.FunctionComponent<Props> = () => {
         <div>
           <Header />
           <Switch>
-            <Route path="/profile">
+            <Route path="/success">
               <Suspense fallback={<Loader />}>
-                <Profile />
+                <Success />
               </Suspense>
             </Route>
-            <Route path="/login">
+            <Route path="/contact">
               <Suspense fallback={<Loader />}>
-                <Login />
+                <Contact />
               </Suspense>
             </Route>
             <Route path="/news">

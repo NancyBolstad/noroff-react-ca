@@ -16,7 +16,7 @@ const defaultColors: IColors = {
   secondaryVariant: '#3d17a5',
   background: '#ffffff',
   surface: '#f7f8f6',
-  error: '#e4d815',
+  error: '#ff0000',
   onPrimary: '#f7f8f6',
   onSecondary: '#ffffff',
   onBackground: '#2B2928',

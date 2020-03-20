@@ -59,7 +59,7 @@ const Button = styled.button<ButtonProps>`
       padding-left: 75px;
       padding-right: 75px;
       border-radius: 35px;
-      ${createFontStyles(props.theme.fonts.b3)};
+      ${createFontStyles(props.theme.fonts.h3)};
 
       @media all and (min-width: ${props => props.theme.mediaQueries.small}px) {
         height: 50px;
