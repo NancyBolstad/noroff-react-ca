@@ -22,6 +22,12 @@ export const List = styled.div`
     flex-wrap: wrap;
     justify-content: space-between;
     margin: calc(-${props => props.theme.spacing.xs}rem / 2);
+
+    &::after {
+      content: '';
+      justify-content: flex-start;
+      width: calc(31.333% - ${props => props.theme.spacing.m / 2}rem);
+    }
   }
 `;
 
@@ -40,7 +46,7 @@ export const Card = styled.a`
   transition: all 0.15s ease-in-out;
 
   &:hover {
-    border:4px solid ${props => props.theme.colors.secondaryVariant};
+    border: 4px solid ${props => props.theme.colors.secondaryVariant};
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
 

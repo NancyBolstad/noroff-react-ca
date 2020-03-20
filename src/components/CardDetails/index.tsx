@@ -12,18 +12,13 @@ export interface Props {
 
 const Wrapper = styled.div`
   max-width: 1440px;
-  margin: ${props => props.theme.spacing.xl}rem auto;
+  margin: 0 auto;
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding: ${props => props.theme.spacing.m}rem;
-
-  @media screen and (min-width: 768px) {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-  }
+  justify-content: center;
+  align-items: center;
+  padding: ${props => props.theme.spacing.s}rem;
 `;
 
 const ImageWrapper = styled.div`
@@ -32,6 +27,10 @@ const ImageWrapper = styled.div`
   img {
     width: 100%;
     min-height: 380px;
+
+    @media screen and (min-width: 768px) {
+      min-height: 680px;
+    }
   }
 `;
 
@@ -41,11 +40,18 @@ const ContentWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: ${props => props.theme.spacing.l}rem ${props => props.theme.spacing.xl}rem;
-  p {
-    line-height: 2;
-    color: ${props => props.theme.colors.onBackground};
+
+  @media screen and (min-width: 768px) {
+    max-width: 780px;
+    margin: auto 0;
   }
+`;
+
+const RichTextWrapper = styled.div`
+  line-height: 2;
+  color: ${props => props.theme.colors.onBackground};
+  font-size: 1.5rem;
+  margin-bottom:${props => props.theme.spacing.s}rem;
 `;
 
 const CardDetails: React.FunctionComponent<Props> = ({
@@ -54,21 +60,25 @@ const CardDetails: React.FunctionComponent<Props> = ({
   description,
   websiteLink,
 }) => {
+  function transformRichText() {
+    return { __html: description };
+  }
   return (
     <Wrapper>
       <ImageWrapper>
         <img src={image} alt={title}></img>
       </ImageWrapper>
       <ContentWrapper>
-        <Typography variant="h2" element="h2" top={32} bottom={26} content={title} />
-        <Typography variant="b1" element="p" bottom={32} content={description} />
+        <Typography variant="h1" element="h2" top={32} bottom={26} content={title} />
+        <RichTextWrapper dangerouslySetInnerHTML={transformRichText()} />
         <ButtonExternal
-          variant="secondary"
+          variant="primary"
           size="large"
-          href={websiteLink}
+          href={`${websiteLink}`}
           title="Visit game website"
+          target="_blank"
         >
-          Game Website
+          Play Game
         </ButtonExternal>
       </ContentWrapper>
     </Wrapper>

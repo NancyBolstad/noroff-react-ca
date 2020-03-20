@@ -10,13 +10,14 @@ export interface Props {
 }
 
 export const CardsList: React.FunctionComponent<Props> = ({ listTitle, cards }) => {
+
   return (
     <Wrapper>
       {!!listTitle && <Typography element="h2" variant="h2" content={listTitle} align="center" />}
       <List>
-        {(cards || []).map(card => (
+        {(cards || []).map((card, index) => (
           <Item
-            key={card.id}
+            key={`${card.id}-${index}`}
             href={`/details/${card.id}`}
             title={`Go to details about card ${card.name}`}
             aria-label={`Go to details about card ${card.name}`}
