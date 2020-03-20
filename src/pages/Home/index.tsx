@@ -1,18 +1,36 @@
 import React from 'react';
 import Heading from '../../components/Heading';
 import HomeContent from '../../components/HomeContent';
-import ImageGrid from '../../components/ImageGrid';
-import { createImagesList } from '../../util/mockHelpers';
+import CardsList from '../../components/CardsList';
+import { Root, Result } from '../../types/data';
 
 interface Props {}
 
 export const Home: React.FunctionComponent<Props> = () => {
+  const [data, setData] = React.useState<Result[]>([]);
+
+  async function getAllCards() {
+    const API_BASE_URL: string = 'https://api.rawg.io/api/games';
+    try {
+      const response = await fetch(API_BASE_URL);
+      const data: Root = await response.json();
+      console.log(data);
+      setData(data.results);
+
+      return data;
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  React.useEffect(() => {
+    getAllCards();
+  });
+
   return (
     <>
-      <Heading content="Noroff React App - Production" isPrimaryColor />
-      <HomeContent>
-        <ImageGrid images={createImagesList(7)} />
-      </HomeContent>
+      <Heading content="Noroff React App" isPrimaryColor />
+      <HomeContent>{!!data && <CardsList cards={data} />}</HomeContent>
     </>
   );
 };

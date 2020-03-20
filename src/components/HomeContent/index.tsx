@@ -6,6 +6,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   padding: ${props => props.theme.spacing.m}rem;
   max-width: 1440px;
+  width: 100%;
   margin: 0 auto;
 `;
 
