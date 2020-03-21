@@ -1,8 +1,8 @@
 {
-  "name": "noroff-react-ma3",
+  "name": "noroff-react-ca",
   "version": "0.1.0",
   "private": true,
-  "repository": "git@github.com/NancyBolstad/noroff-react-ma3.git",
+  "repository": "git@github.com/NancyBolstad/noroff-react-ca.git",
   "author": "Nancy Bolstad <litchacha@gmail.com>",
   "license": "MIT",
   "dependencies": {
