@@ -4,8 +4,8 @@ import ThemeWrapper from '../components/ThemeWrapper';
 import Header from '../components/Header';
 import Loader from '../components/Loader';
 import Home from './Home';
+import News from './Details';
 
-const News = lazy(() => import('./News'));
 const Contact = lazy(() => import('./Contact'));
 const Success = lazy(() => import('./Success'));
 
@@ -28,13 +28,15 @@ const Layout: React.FunctionComponent<Props> = () => {
                 <Contact />
               </Suspense>
             </Route>
-            <Route path="/news">
+            <Route path="/details/:id">
               <Suspense fallback={<Loader />}>
                 <News />
               </Suspense>
             </Route>
             <Route path="/">
-              <Home />
+              <Suspense fallback={<Loader />}>
+                <Home />
+              </Suspense>
             </Route>
           </Switch>
         </div>

@@ -15,8 +15,7 @@ const ContactForm: React.FC<Props> = () => {
 
   let history = useHistory();
 
-  //@ts-ignore
-  const onSubmit = data => {
+  const onSubmit = ()=> {
     history.push('/success');
   };
 
