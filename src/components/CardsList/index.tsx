@@ -15,12 +15,10 @@ export const CardsList: React.FunctionComponent<Props> = ({ listTitle, cards }) 
   const [isFullList, setIsFullList] = React.useState<boolean>(true);
 
   function filter(value: string) {
-    const newArray: Result[] = cards.filter(function(element) {
-      const lowerCaseName = element.name.toLowerCase();
-      if (lowerCaseName.startsWith(value)) {
-        return true;
-      }
-      return false;
+    const lowerCaseSearchValue = value.toLowerCase();
+    const newArray: Result[] = cards.filter(element => {
+      const lowerGameName = element.name.toLowerCase();
+      return lowerGameName.startsWith(lowerCaseSearchValue);
     });
     setFilterData(newArray);
     setIsFullList(false);

@@ -26,8 +26,8 @@ export const SearchCards: React.FunctionComponent<Props> = ({ handler }) => {
             value={searchValue}
             onChange={(e: any) => {
               e.preventDefault();
-              const searchValue = e.target.value.toLowerCase();
-              setSearchValue(searchValue);
+              setSearchValue(e.target.value);
+              handler(e.target.value);
             }}
           />
           <button type="submit" aria-label="Search for recipe name">
