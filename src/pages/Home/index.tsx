@@ -29,7 +29,7 @@ export const Home: React.FunctionComponent<Props> = () => {
 
   return (
     <>
-      <Heading content="Noroff React App" isPrimaryColor />
+      <Heading content="RAWG Video Games React App" isPrimaryColor />
       <HomeContent>{!!data && <CardsList cards={data} />}</HomeContent>
     </>
   );
