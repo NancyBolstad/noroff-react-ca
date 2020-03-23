@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import Button from '../Button';
 
 export const Wrapper = styled.section`
   padding: ${props => props.theme.spacing.xs}rem;
@@ -45,11 +46,6 @@ export const Card = styled.div`
   border-radius: 15px;
   transition: all 0.15s ease-in-out;
 
-  &:hover {
-    border: 4px solid ${props => props.theme.colors.secondaryVariant};
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  }
-
   @media screen and (min-width: 768px) {
     width: calc(50% - ${props => props.theme.spacing.xs}rem);
     padding: ${props => props.theme.spacing.m}rem;
@@ -66,4 +62,23 @@ export const CardImage = styled.img`
   width: 100%;
   height: 280px;
   margin-bottom: ${props => props.theme.spacing.xs}rem;
+`;
+
+export const LikeButton = styled(Button)<{ isLiked: boolean }>`
+  background-color: transparent;
+
+  svg {
+    width: 48px;
+    height: 48px;
+    stroke-width: 10px;
+    fill: ${props => props.theme.colors.primary};
+    margin-top: ${props => props.theme.spacing.xs}rem;
+  }
+  ${props =>
+    props.isLiked &&
+    css`
+      svg {
+        fill: ${props => props.theme.colors.secondary};
+      }
+    `}
 `;
