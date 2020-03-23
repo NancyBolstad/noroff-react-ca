@@ -2,6 +2,7 @@ import * as React from 'react';
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
 import createFontStyles from '../../util/createFontStyles';
 import { defaultTheme } from '../../util/defaultTheme';
+import GlobalContext from '../../pages/GlobalContext';
 
 export interface Props {}
 
@@ -24,7 +25,9 @@ const ThemeWrapper: React.FunctionComponent<Props> = ({ children }) => (
   <ThemeProvider theme={defaultTheme}>
     <div>
       <GlobalStyle />
-      <Content>{children}</Content>
+      <GlobalContext>
+        <Content>{children}</Content>
+      </GlobalContext>
     </div>
   </ThemeProvider>
 );
