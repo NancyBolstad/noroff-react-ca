@@ -22,34 +22,38 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: ${props => props.theme.spacing.s}rem;
+
+  @media screen and (min-width: 1280px) {
+    padding: ${props => props.theme.spacing.s}rem;
+  }
 `;
 
 const ImageWrapper = styled.div`
-  background: ${props => props.theme.colors.surface};
+  background: ${props => props.theme.colors.background};
   flex: 1;
   img {
     width: 100%;
     min-height: 380px;
 
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 1280px) {
       min-height: 680px;
     }
   }
 `;
 
 const ContentWrapper = styled.div`
+  width: 100%;
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1280px) {
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
-    padding: ${props => props.theme.spacing.l}rem;
+    padding: ${props => props.theme.spacing.l}rem 0;
   }
 `;
 
@@ -60,8 +64,12 @@ const RichTextWrapper = styled.div`
   margin-bottom: ${props => props.theme.spacing.s}rem;
   white-space: pre-wrap;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1280px) {
     margin-left: ${props => props.theme.spacing.l}rem;
+  }
+
+  p {
+    margin: 0;
   }
 `;
 
