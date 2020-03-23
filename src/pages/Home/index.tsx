@@ -12,7 +12,7 @@ export const Home: React.FunctionComponent<Props> = () => {
     <>
       <Heading content="RAWG Video Games React App" isPrimaryColor />
       <HomeContent>
-        <CardsList cards={localContext.default} />}
+        <CardsList cards={localContext.default} />
       </HomeContent>
     </>
   );
