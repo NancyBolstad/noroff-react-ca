@@ -12,6 +12,7 @@ export interface Props {
 
 export const ResultsWrapper: React.FunctionComponent<Props> = ({ cards }) => {
   const { favorites, dispatch } = React.useContext(Context);
+  const [like, setLike] = React.useState<boolean>(false);
 
   console.log(favorites);
   return (
@@ -50,8 +51,9 @@ export const ResultsWrapper: React.FunctionComponent<Props> = ({ cards }) => {
             variant="primary"
             size="medium"
             onClick={() => {
+              setLike(!like);
               dispatch({
-                type: Types.Like,
+                type: like ? Types.Like : Types.Dislike,
                 payload: card,
               });
             }}

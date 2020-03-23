@@ -26,7 +26,7 @@ export type FavoriteActions = ActionMap<Payload>[keyof ActionMap<Payload>];
 
 export const favoriteCardsReducer = (state: Result[], action: FavoriteActions) => {
   switch (action.type) {
-    case Types.Like:
+    case Types.Like:    
       return [...state, action.payload];
     case Types.Dislike:
       return [...state.filter(product => product.id !== action.payload.id)];
