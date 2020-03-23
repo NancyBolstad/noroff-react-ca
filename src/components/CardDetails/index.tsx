@@ -23,9 +23,7 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
 
-  @media screen and (min-width: 1280px) {
-    padding: ${props => props.theme.spacing.s}rem;
-  }
+  padding: ${props => props.theme.spacing.l}rem ${props => props.theme.spacing.s}rem;
 `;
 
 const ImageWrapper = styled.div`
