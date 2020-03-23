@@ -31,7 +31,7 @@ export const List = styled.div`
   }
 `;
 
-export const Card = styled.a`
+export const Card = styled.div`
   background: ${props => props.theme.colors.surface};
   display: flex;
   flex-direction: column;

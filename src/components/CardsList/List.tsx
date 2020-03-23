@@ -1,23 +1,23 @@
 import React from 'react';
 import Typography from '../Typography';
-import Button from '../Button';
+import Button, { ButtonExternal } from '../Button';
 import { Result } from '../../types/data.d';
 import { List, Card as Item, CardImage } from './styles';
+import { Context } from '../../pages/GlobalContext';
+import { Types } from '../../context/reducers';
 
 export interface Props {
   cards: Result[];
 }
 
 export const ResultsWrapper: React.FunctionComponent<Props> = ({ cards }) => {
+  const { favorites, dispatch } = React.useContext(Context);
+
+  console.log(favorites);
   return (
     <List>
       {(cards || []).map((card, index) => (
-        <Item
-          key={`${card.id}-${index}`}
-          href={`/details/${card.id}`}
-          title={`Go to details about card ${card.name}`}
-          aria-label={`Go to details about card ${card.name}`}
-        >
+        <Item key={`${card.id}-${index}`}>
           <Typography element="h3" variant="h3" content={card.name} bottom={22} top={16} />
           {!!card.background_image && <CardImage src={card.background_image} alt={card.name} />}
           {!!card.released && (
@@ -37,10 +37,25 @@ export const ResultsWrapper: React.FunctionComponent<Props> = ({ cards }) => {
               bottom={16}
             />
           )}
-          <Button variant="primary" size="medium">
+          <ButtonExternal
+            variant="primary"
+            size="medium"
+            href={`/details/${card.id}`}
+            title={`Go to details about card ${card.name}`}
+            aria-label={`Go to details about card ${card.name}`}
+          >
             View Details
-          </Button>
-          <Button variant="primary" size="medium">
+          </ButtonExternal>
+          <Button
+            variant="primary"
+            size="medium"
+            onClick={() => {
+              dispatch({
+                type: Types.Like,
+                payload: card,
+              });
+            }}
+          >
             Like
           </Button>
         </Item>

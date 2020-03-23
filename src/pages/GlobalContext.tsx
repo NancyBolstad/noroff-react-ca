@@ -1,21 +1,29 @@
 import React from 'react';
 import { Root, Result } from '../types/data';
 import { API_BASE_URL } from '../util/constants';
+import { favoriteCardsReducer, FavoriteActions } from '../context/reducers';
 
 interface Props {}
 
 interface GlobalDataProps {
   default: Result[];
-  favorites?: Result[];
+  favorites: Result[];
+  dispatch: React.Dispatch<FavoriteActions>;
 }
 
 export const Context = React.createContext<GlobalDataProps>({
-    default: [],
-    favorites:[],
-  });
+  default: [],
+  favorites: [],
+  dispatch: () => null,
+});
 
 export const GlobalContext: React.FunctionComponent<Props> = ({ children }) => {
   const [data, setData] = React.useState<Result[]>([]);
+  const initializeState: Result[] = [];
+
+  const [state, dispatch] = React.useReducer(favoriteCardsReducer, initializeState);
+
+  const favoriteData: Result[] = state;
 
   async function getAllCards() {
     try {
@@ -38,6 +46,8 @@ export const GlobalContext: React.FunctionComponent<Props> = ({ children }) => {
     <Context.Provider
       value={{
         default: data,
+        favorites: favoriteData,
+        dispatch: dispatch,
       }}
     >
       {children}
