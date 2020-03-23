@@ -1,6 +1,6 @@
 import React from 'react';
 import Typography from '../Typography';
-import { ButtonExternal } from '../Button';
+import Button from '../Button';
 import { Result } from '../../types/data.d';
 import { List, Card as Item, CardImage } from './styles';
 
@@ -37,9 +37,12 @@ export const ResultsWrapper: React.FunctionComponent<Props> = ({ cards }) => {
               bottom={16}
             />
           )}
-          <ButtonExternal href={`/details/${card.id}`} variant="primary" size="medium">
+          <Button variant="primary" size="medium">
             View Details
-          </ButtonExternal>
+          </Button>
+          <Button variant="primary" size="medium">
+            Like
+          </Button>
         </Item>
       ))}
     </List>
