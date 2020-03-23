@@ -23,6 +23,9 @@ const Button = styled.button<ButtonProps>`
     pointer-events: none;
     opacity: 0.6;
   }
+  &:focus {
+    outline: 0;
+  }
   svg {
     width: 24px;
     height: 24px;
