@@ -13,20 +13,16 @@ interface GlobalDataProps {
 
 export const Context = React.createContext<GlobalDataProps>({
   default: [],
-  favorites: initializeState(),
+  favorites: [],
   dispatch: () => null,
 });
-
-function initializeState(): Result[] {
-  const localData = window.localStorage.getItem('favorites');
-  if (!localData) return [] as Result[];
-  return JSON.parse(localData);
-}
 
 export const GlobalContext: React.FunctionComponent<Props> = ({ children }) => {
   const [data, setData] = React.useState<Result[]>([]);
 
-  const [state, dispatch] = React.useReducer(favoriteCardsReducer, initializeState());
+  const initializeState: Result[] = [];
+
+  const [state, dispatch] = React.useReducer(favoriteCardsReducer, initializeState);
 
   async function getAllCards() {
     try {
