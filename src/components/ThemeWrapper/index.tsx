@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
 import createFontStyles from '../../util/createFontStyles';
 import { defaultTheme } from '../../util/defaultTheme';
-import GlobalContext from '../../pages/GlobalContext';
+import GlobalContext from '../../context/GlobalContext';
 
 export interface Props {}
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Root, Result } from '../types/data';
 import { API_BASE_URL } from '../util/constants';
-import { favoriteCardsReducer, FavoriteActions } from '../context/reducers';
+import { favoriteCardsReducer, FavoriteActions } from './reducers';
 
 interface Props {}
 
@@ -13,17 +13,20 @@ interface GlobalDataProps {
 
 export const Context = React.createContext<GlobalDataProps>({
   default: [],
-  favorites: [],
+  favorites: initializeState(),
   dispatch: () => null,
 });
 
+function initializeState(): Result[] {
+  const localData = window.localStorage.getItem('favorites');
+  if (!localData) return [] as Result[];
+  return JSON.parse(localData);
+}
+
 export const GlobalContext: React.FunctionComponent<Props> = ({ children }) => {
   const [data, setData] = React.useState<Result[]>([]);
-  const initializeState: Result[] = [];
 
-  const [state, dispatch] = React.useReducer(favoriteCardsReducer, initializeState);
-
-  const favoriteData: Result[] = state;
+  const [state, dispatch] = React.useReducer(favoriteCardsReducer, initializeState());
 
   async function getAllCards() {
     try {
@@ -46,7 +49,7 @@ export const GlobalContext: React.FunctionComponent<Props> = ({ children }) => {
     <Context.Provider
       value={{
         default: data,
-        favorites: favoriteData,
+        favorites: state,
         dispatch: dispatch,
       }}
     >

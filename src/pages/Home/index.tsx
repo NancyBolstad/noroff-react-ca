@@ -2,7 +2,7 @@ import React from 'react';
 import Heading from '../../components/Heading';
 import HomeContent from '../../components/HomeContent';
 import CardsList from '../../components/CardsList';
-import { Context } from '../GlobalContext';
+import { Context } from '../../context/GlobalContext';
 
 interface Props {}
 

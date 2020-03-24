@@ -3,7 +3,7 @@ import Typography from '../Typography';
 import { ButtonExternal } from '../Button';
 import { Result } from '../../types/data.d';
 import { Card as Wrapper, CardImage, LikeButton } from './styles';
-import { Context } from '../../pages/GlobalContext';
+import { Context } from '../../context/GlobalContext';
 import { Types } from '../../context/reducers';
 import { heart } from '../../util/icons';
 
@@ -13,10 +13,27 @@ export interface Props {
 
 export const Card: React.FunctionComponent<Props> = ({ card }) => {
   const { favorites, dispatch } = React.useContext(Context);
-  const hasLiked: boolean = favorites.includes(card);
-  const [like, setLike] = React.useState<boolean>(hasLiked);
+  const [like, setLike] = React.useState(false);
 
-  console.log(favorites);
+  React.useEffect(() => {
+    window.localStorage.setItem('favorites', JSON.stringify(favorites));
+  }, [favorites]);
+
+  React.useEffect(() => {
+    if (like === true) {
+      dispatch({
+        type: Types.Like,
+        payload: card,
+      });
+    } else {
+      dispatch({
+        type: Types.Dislike,
+        payload: {
+          id: card.id,
+        },
+      });
+    }
+  }, [like, card, dispatch]);
   return (
     <Wrapper>
       <Typography element="h3" variant="h3" content={card.name} bottom={22} top={16} />
@@ -47,20 +64,7 @@ export const Card: React.FunctionComponent<Props> = ({ card }) => {
         size="medium"
         onClick={e => {
           e.preventDefault();
-          setLike(!like);
-          if (like) {
-            dispatch({
-              type: Types.Like,
-              payload: card,
-            });
-          } else {
-            dispatch({
-              type: Types.Dislike,
-              payload: {
-                id: card.id,
-              },
-            });
-          }
+          setLike(like ? false : true);
         }}
         isLiked={like}
       >
