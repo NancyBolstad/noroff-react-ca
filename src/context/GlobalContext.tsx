@@ -20,7 +20,8 @@ export const Context = React.createContext<GlobalDataProps>({
 export const GlobalContext: React.FunctionComponent<Props> = ({ children }) => {
   const [data, setData] = React.useState<Result[]>([]);
 
-  const initializeState: Result[] = [];
+  //@ts-ignore
+  const initializeState: Result[] = JSON.parse(window.localStorage.getItem('favorites'));
 
   const [state, dispatch] = React.useReducer(favoriteCardsReducer, initializeState);
 
