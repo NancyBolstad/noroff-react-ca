@@ -11,9 +11,12 @@ interface GlobalDataProps {
   dispatch: React.Dispatch<FavoriteActions>;
 }
 
+//@ts-ignore
+const getFavorites: Result[] = JSON.parse(window.localStorage.getItem('favorites'));
+
 export const Context = React.createContext<GlobalDataProps>({
   default: [],
-  favorites: [],
+  favorites: getFavorites,
   dispatch: () => null,
 });
 
@@ -23,7 +26,11 @@ export const GlobalContext: React.FunctionComponent<Props> = ({ children }) => {
   //@ts-ignore
   const initializeState: Result[] = JSON.parse(window.localStorage.getItem('favorites'));
 
+  //@ts-ignore
   const [state, dispatch] = React.useReducer(favoriteCardsReducer, initializeState);
+
+  console.log(999999);
+  console.log(state);
 
   async function getAllCards() {
     try {
@@ -46,7 +53,7 @@ export const GlobalContext: React.FunctionComponent<Props> = ({ children }) => {
     <Context.Provider
       value={{
         default: data,
-        favorites: state,
+        favorites: state ? state : getFavorites,
         dispatch: dispatch,
       }}
     >
