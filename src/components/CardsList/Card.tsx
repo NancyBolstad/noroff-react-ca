@@ -19,6 +19,8 @@ export const Card: React.FunctionComponent<Props> = ({ card }) => {
     window.localStorage.setItem('favorites', JSON.stringify(favorites));
   }, [favorites]);
 
+  console.log(favorites);
+
   React.useEffect(() => {
     if (like === true) {
       dispatch({

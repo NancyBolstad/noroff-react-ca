@@ -1,19 +1,20 @@
 import * as React from 'react';
 import Heading from '../../components/Heading';
-import NewsList from '../../components/NewsList';
-import CardsList from '../../components/CardsList/';
 import { Context } from '../../context/GlobalContext';
 
 interface Props {}
 
-
 export const Favorites: React.FunctionComponent<Props> = () => {
-  const localContext = React.useContext(Context);
+  const { favorites } = React.useContext(Context);
+
+  console.log(favorites);
+
   return (
     <>
       <Heading content="Favorites" isPrimaryColor />
-        <CardsList cards={localContext.favorites} favorites />
-        <NewsList />
+      {(favorites || []).map((element, index) => (
+        <h1 key={index}>{element.name}</h1>
+      ))}
     </>
   );
 };
