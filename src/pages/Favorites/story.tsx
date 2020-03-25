@@ -1,5 +1,5 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import Home from '.';
+import Favorites from '.';
 
-storiesOf('Page/success', module).add('Default', () => <Home />);
+storiesOf('Page/favorites', module).add('Default', () => <Favorites />);
