@@ -1,6 +1,6 @@
 import React from 'react';
 import Typography from '../Typography';
-import { ButtonExternal } from '../Button';
+import { ButtonExternal } from '../Button/Button';
 import { Result } from '../../types/data.d';
 import { Card as Wrapper, CardImage, LikeButton } from './styles';
 import { Context } from '../../context/GlobalContext';

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 import { Form, StyledInput, Label, StyledLabelText, StyledTextArea, ErrorMessage } from './styles';
-import Button from '../Button';
+import Button from '../Button/Button';
 import Heading from '../Heading';
 import contactSchema from '../../util/contactSchema';
 

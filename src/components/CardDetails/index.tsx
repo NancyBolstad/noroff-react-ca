@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import Typography from '../Typography';
-import { ButtonExternal } from '../Button';
+import { ButtonExternal } from '../Button/Button';
 import Tag from '../Tag';
 import { Genre, Platform2 } from '../../types/details';
 

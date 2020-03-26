@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import Button from '../Button';
+import Button from '../Button/Button';
 
 export const Wrapper = styled.section`
   padding: ${props => props.theme.spacing.xs}rem;

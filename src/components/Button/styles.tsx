@@ -1,15 +1,8 @@
 import styled, { css } from 'styled-components';
 import createFontStyles from '../../util/createFontStyles';
+import {ButtonProps} from './Button';
 
-type Size = 'small' | 'medium' | 'large';
-type Variant = 'primary' | 'secondary' | 'tertiary' | 'quaternary';
-
-interface ButtonProps {
-  size: Size;
-  variant: Variant;
-}
-
-const Button = styled.button<ButtonProps>`
+export const Button = styled.button<ButtonProps>`
   display: flex;
   width: 100%;
   justify-content: center;
@@ -137,9 +130,3 @@ const Button = styled.button<ButtonProps>`
       }
     `};
 `;
-
-const ButtonExternal = Button.withComponent('a');
-const ButtonInput = Button.withComponent('input');
-
-export default Button;
-export { ButtonExternal, ButtonInput };
