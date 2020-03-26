@@ -6,6 +6,7 @@ import { Result } from '../../types/data';
 import SearchCards from '../../components/SearchCards/SearchCards';
 import CardsList from '../../components/CardsList/';
 import useIsDesktop from '../../hooks/useIsDesktop';
+import Loader from '../../components/Loader';
 
 interface Props {}
 
@@ -13,8 +14,10 @@ export const Home: React.FunctionComponent<Props> = () => {
   const localContext = React.useContext(Context);
   const [filtedData, setFilterData] = React.useState<Result[]>([]);
   const [isFullList, setIsFullList] = React.useState<boolean>(true);
+  const [loading, setLoading] = React.useState<boolean>(true);
 
   function filter(value: string) {
+    setLoading(true);
     const lowerCaseSearchValue = value.toLowerCase();
     const newArray: Result[] = localContext.default.filter(element => {
       const lowerGameName = element.name.toLowerCase();
@@ -22,7 +25,14 @@ export const Home: React.FunctionComponent<Props> = () => {
     });
     setFilterData(newArray);
     setIsFullList(false);
+    setLoading(false);
   }
+
+  React.useEffect(() => {
+    setTimeout(function() {
+      setLoading(false);
+    }, 2000);
+  }, [loading]);
 
   return (
     <MainContent>
@@ -37,7 +47,7 @@ export const Home: React.FunctionComponent<Props> = () => {
         topDesktop={48}
       />
       <SearchCards handler={filter} />
-      <CardsList cards={isFullList ? localContext.default : filtedData} />
+      {loading ? <Loader /> : <CardsList cards={isFullList ? localContext.default : filtedData} />}
     </MainContent>
   );
 };
