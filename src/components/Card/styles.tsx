@@ -29,7 +29,7 @@ export const CardWrapper = styled.div`
 
 export const CardImage = styled.img`
   width: 100%;
-  height: 280px;
+  height: 15.5rem;
   margin-bottom: ${props => props.theme.spacing.xs}rem;
 `;
 

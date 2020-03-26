@@ -8,6 +8,7 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     -webkit-font-smoothing: antialiased;
+    overflow-x:hidden;
     color: ${props => props.theme.colors.onBackground};
     ${props => createFontStyles(props.theme.fonts.b1)}
   }

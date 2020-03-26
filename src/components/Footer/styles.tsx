@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const FooterWrapper = styled.footer`
   width: 100%;
   background-color: ${props => props.theme.colors.surface};
-  height: 10vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
