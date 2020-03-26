@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import createFontStyles from '../../util/createFontStyles';
-import {ButtonProps} from './Button';
+import { ButtonProps } from '.';
 
 export const Button = styled.button<ButtonProps>`
   display: flex;

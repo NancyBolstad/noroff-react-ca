@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
+export const CardDetailsWrapper = styled.div`
   max-width: 1440px;
   margin: 0 auto;
   width: 100%;
@@ -12,7 +12,7 @@ export const Wrapper = styled.div`
   padding: ${props => props.theme.spacing.l}rem ${props => props.theme.spacing.s}rem;
 `;
 
-export const ImageWrapper = styled.div`
+export const DetailImage = styled.div`
   background: ${props => props.theme.colors.background};
   flex: 1;
   img {
@@ -25,7 +25,7 @@ export const ImageWrapper = styled.div`
   }
 `;
 
-export const ContentWrapper = styled.div`
+export const CardDetailsContent = styled.div`
   width: 100%;
   flex: 1;
   display: flex;
@@ -41,7 +41,7 @@ export const ContentWrapper = styled.div`
   }
 `;
 
-export const RichTextWrapper = styled.div`
+export const RichText = styled.div`
   line-height: 1.8;
   color: ${props => props.theme.colors.onBackground};
   font-size: 1.5rem;

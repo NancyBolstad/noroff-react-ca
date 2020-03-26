@@ -1,23 +1,31 @@
 import * as React from 'react';
-import { Wrapper, Nav, MenuRight, NavLinkList, NavLink, SubmitButton } from './styles';
+import {
+  HeaderWrapper,
+  HeaderNav,
+  HeaderMenuRight,
+  HeaderNavLinkList,
+  HeaderNavLink,
+  HeaderButton,
+  SiteLogo,
+} from './styles';
 import ThemeWrapper from '../ThemeWrapper';
 
-const Header: React.FC = () => {
+const Header: React.FunctionComponent = () => {
   return (
     <ThemeWrapper>
-      <Wrapper>
-        <Nav>
-          <NavLinkList>
-            <NavLink to="/">GA-ME</NavLink>
-            <NavLink to="/favorites">Favorites</NavLink>
-          </NavLinkList>
-          <MenuRight>
+      <HeaderWrapper>
+        <HeaderNav>
+          <HeaderNavLinkList>
+            <HeaderNavLink to="/favorites">Favorites</HeaderNavLink>
+          </HeaderNavLinkList>
+          <SiteLogo to="/">RAWG</SiteLogo>
+          <HeaderMenuRight>
             <li>
-              <SubmitButton to="/contact">Contact</SubmitButton>
+              <HeaderButton to="/contact">Contact</HeaderButton>
             </li>
-          </MenuRight>
-        </Nav>
-      </Wrapper>
+          </HeaderMenuRight>
+        </HeaderNav>
+      </HeaderWrapper>
     </ThemeWrapper>
   );
 };

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { search } from '../../../util/icons';
+import { search } from '../../util/icons';
 import { Wrapper, SearchFormWrapper } from './styles';
 
 interface Props {

@@ -1,6 +1,6 @@
 import React from 'react';
 import Typography from '../Typography';
-import { ButtonExternal } from '../Button/Button';
+import { ButtonExternal } from '../Button';
 import { Result } from '../../types/data.d';
 import { Card as Wrapper, CardImage, LikeButton } from './styles';
 import { Context } from '../../context/GlobalContext';
@@ -12,14 +12,8 @@ export interface Props {
 }
 
 export const Card: React.FunctionComponent<Props> = ({ card }) => {
-  const { favorites, dispatch } = React.useContext(Context);
+  const { dispatch } = React.useContext(Context);
   const [like, setLike] = React.useState(false);
-
-  React.useEffect(() => {
-    window.localStorage.setItem('favorites', JSON.stringify(favorites));
-  }, [favorites]);
-
-  console.log(favorites);
 
   React.useEffect(() => {
     if (like === true) {

@@ -2,8 +2,8 @@ import * as React from 'react';
 import Typography from '../Typography';
 import { Genre, Platform2 } from '../../types/details';
 import {
-  Wrapper,
-  ListWrapper,
+  TagWrapper,
+  TagList,
   CategoriesButtonWrapper,
   CategoriesButton,
   CategoriesList,
@@ -32,7 +32,7 @@ const Tag: React.FunctionComponent<Props> = ({ genres, platforms }) => {
   }, [isPlatforms]);
 
   return (
-    <Wrapper>
+    <TagWrapper>
       <CategoriesButtonWrapper>
         <CategoriesButton
           size="small"
@@ -57,7 +57,7 @@ const Tag: React.FunctionComponent<Props> = ({ genres, platforms }) => {
           Platforms
         </CategoriesButton>
       </CategoriesButtonWrapper>
-      <ListWrapper>
+      <TagList>
         <CategoriesList>
           {isGenres &&
             genres.map((genre, index) => {
@@ -76,8 +76,8 @@ const Tag: React.FunctionComponent<Props> = ({ genres, platforms }) => {
               );
             })}
         </CategoriesList>
-      </ListWrapper>
-    </Wrapper>
+      </TagList>
+    </TagWrapper>
   );
 };
 

@@ -1,9 +1,9 @@
 import * as React from 'react';
 import Typography from '../Typography';
-import { ButtonExternal } from '../Button/Button';
+import { ButtonExternal } from '../Button';
 import Tag from '../Tag';
 import { Genre, Platform2 } from '../../types/details';
-import { Wrapper, ImageWrapper, ContentWrapper, RichTextWrapper } from './styles';
+import { CardDetailsWrapper, DetailImage, CardDetailsContent, RichText } from './styles';
 
 export interface Props {
   title: string;
@@ -23,15 +23,15 @@ const CardDetails: React.FunctionComponent<Props> = ({
   platforms,
 }) => {
   return (
-    <Wrapper>
+    <CardDetailsWrapper>
       <Typography variant="h1" element="h2" top={32} bottom={26} content={title} />
-      <ImageWrapper>
+      <DetailImage>
         <img src={image} alt={title} />
-      </ImageWrapper>
-      <ContentWrapper>
+      </DetailImage>
+      <CardDetailsContent>
         <Tag genres={genres} platforms={platforms} />
-        <RichTextWrapper dangerouslySetInnerHTML={{ __html: description }} />
-      </ContentWrapper>
+        <RichText dangerouslySetInnerHTML={{ __html: description }} />
+      </CardDetailsContent>
       <ButtonExternal
         variant="primary"
         size="large"
@@ -41,7 +41,7 @@ const CardDetails: React.FunctionComponent<Props> = ({
       >
         Play Game
       </ButtonExternal>
-    </Wrapper>
+    </CardDetailsWrapper>
   );
 };
 

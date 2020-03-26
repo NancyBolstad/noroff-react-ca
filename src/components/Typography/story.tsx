@@ -49,7 +49,6 @@ const VariantB = (
     content={`Paragraph b2, algin:center: ${mockContent}`}
     element="p"
     variant="b2"
-    align="center"
     maxWidth={480}
     isPrimaryColor
   />
@@ -60,7 +59,6 @@ const VariantC = (
     content={`Paragraph b3, algin:right: ${mockContent}`}
     element="p"
     variant="b3"
-    align="right"
     maxWidth={680}
   />
 );

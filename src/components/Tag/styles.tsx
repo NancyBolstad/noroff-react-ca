@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
-import Button from '../Button/Button';
+import Button from '../Button';
 
-export const Wrapper = styled.div`
+export const TagWrapper = styled.div`
   width: 100%;
   margin: 0 auto;
   width: 100%;
@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const ListWrapper = styled.div`
+export const TagList = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;

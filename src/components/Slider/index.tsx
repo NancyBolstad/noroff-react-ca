@@ -4,10 +4,10 @@ import { arrow } from '../../util/icons';
 import Typography from '../Typography';
 import { Result } from '../../types/data';
 import {
-  Wrapper,
+  SliderWrapper,
   Slide,
-  TextContent,
-  ImageContent,
+  SlideTextContent,
+  SlideImageWrapper,
   SliderNav,
   SlideTitle,
   Dots,
@@ -51,24 +51,24 @@ export const Slider: React.FunctionComponent<Props> = ({ defaultIndex = 0, slide
   }
 
   return (
-    <Wrapper>
+    <SliderWrapper>
       <Swipeable
         onSwipedLeft={() => changeIndex(index - 1)}
         onSwipedRight={() => changeIndex(index + 1)}
       >
         <Slide>
-          <TextContent>
+          <SlideTextContent>
             <SlideTitle>
               {currentSlide.name && (
                 <Typography element="h3" variant="h2" content={currentSlide.name} />
               )}
             </SlideTitle>
-          </TextContent>
-          <ImageContent>
+          </SlideTextContent>
+          <SlideImageWrapper>
             {currentSlide.background_image && (
               <img src={currentSlide.background_image} alt={currentSlide.name} />
             )}
-          </ImageContent>
+          </SlideImageWrapper>
           <SliderNav>
             <PrevNextButton
               href="#"
@@ -99,7 +99,7 @@ export const Slider: React.FunctionComponent<Props> = ({ defaultIndex = 0, slide
           </SliderNav>
         </Slide>
       </Swipeable>
-    </Wrapper>
+    </SliderWrapper>
   );
 };
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Result } from '../../types/data.d';
+import { Result } from '../../types/data';
 import { List } from './styles';
 import Card from './Card';
 

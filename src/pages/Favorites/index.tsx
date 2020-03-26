@@ -1,8 +1,8 @@
 import * as React from 'react';
-import HomeContent from '../../components/HomeContent';
+import HomeContent from '../../components/MainContent';
 import { Context } from '../../context/GlobalContext';
-import NewsList from '../../components/NewsList';
-import Slider from '../../components/Slider';
+import NewsList from '../../components/InfoList';
+import Slider from '../../components/Slider/';
 
 interface Props {}
 

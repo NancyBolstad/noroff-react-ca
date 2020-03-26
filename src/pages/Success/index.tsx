@@ -1,18 +1,21 @@
 import * as React from 'react';
-import Heading from '../../components/Heading';
-import HomeContent from '../../components/HomeContent';
-import NewsList from '../../components/NewsList';
+import Typography from '../../components/Typography';
+import MainContent from '../../components/MainContent';
+import InfoList from '../../components/InfoList';
 
 interface Props {}
 
 export const Success: React.FunctionComponent<Props> = () => {
   return (
-    <>
-      <Heading content="Thank you for getting in touched!" isPrimaryColor />
-      <HomeContent>
-        <NewsList />
-      </HomeContent>
-    </>
+    <MainContent>
+      <Typography
+        element="h1"
+        variant="h1"
+        content="Thank you for getting in touched!"
+        isPrimaryColor
+      />
+      <InfoList />
+    </MainContent>
   );
 };
 

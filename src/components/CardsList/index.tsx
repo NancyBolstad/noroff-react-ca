@@ -2,8 +2,8 @@ import React from 'react';
 import Typography from '../Typography';
 import { Result } from '../../types/data.d';
 import { Wrapper } from './styles';
-import SearchCards from './SearchCards';
-import ResultsWrapper from './List';
+import SearchCards from '../SearchCards/SearchCards';
+import ResultsWrapper from './ResultsWrapper';
 
 export interface Props {
   listTitle?: string;
@@ -26,7 +26,7 @@ export const CardsList: React.FunctionComponent<Props> = ({ listTitle, cards }) 
 
   return (
     <Wrapper>
-      {!!listTitle && <Typography element="h2" variant="h2" content={listTitle} align="center" />}
+      {!!listTitle && <Typography element="h2" variant="h2" content={listTitle}/>}
        <SearchCards handler={filter} />
       <ResultsWrapper cards={isFullList ? cards : filtedData} />
     </Wrapper>
