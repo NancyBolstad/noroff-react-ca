@@ -7,11 +7,10 @@ import ResultsWrapper from './List';
 
 export interface Props {
   listTitle?: string;
-  favorites?: boolean;
   cards: Result[];
 }
 
-export const CardsList: React.FunctionComponent<Props> = ({ listTitle, favorites, cards }) => {
+export const CardsList: React.FunctionComponent<Props> = ({ listTitle, cards }) => {
   const [filtedData, setFilterData] = React.useState<Result[]>([]);
   const [isFullList, setIsFullList] = React.useState<boolean>(true);
 
@@ -28,7 +27,7 @@ export const CardsList: React.FunctionComponent<Props> = ({ listTitle, favorites
   return (
     <Wrapper>
       {!!listTitle && <Typography element="h2" variant="h2" content={listTitle} align="center" />}
-      {!favorites && <SearchCards handler={filter} />}
+       <SearchCards handler={filter} />
       <ResultsWrapper cards={isFullList ? cards : filtedData} />
     </Wrapper>
   );
