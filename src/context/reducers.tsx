@@ -29,7 +29,7 @@ export const favoriteCardsReducer = (state: Result[], action: FavoriteActions) =
     case Types.Like:
       return [...state, action.payload];
     case Types.Dislike:
-      return [...state.filter(product => product.id !== action.payload.id)];
+      return state ? state.filter(product => product.id !== action.payload.id) : [];
     default:
       return state;
   }
