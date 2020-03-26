@@ -1,13 +1,17 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
+export const InfoListWrapper = styled.div`
   width: 100%;
-  background: ${props => props.theme.colors.surface};
+  background: ${props => props.theme.colors.background};
   color: ${props => props.theme.colors.onSurface};
   overflow: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
-export const ListFlexParent = styled.ul`
+export const InfoListFlexParent = styled.ul`
   width: 100%;
   max-width: 680px;
   margin: 0 auto;
@@ -16,7 +20,7 @@ export const ListFlexParent = styled.ul`
   flex-direction: column;
 `;
 
-export const ItemFlexChild = styled.li`
+export const InfoItemFlexChild = styled.li`
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -27,8 +31,9 @@ export const ItemFlexChild = styled.li`
   }
 `;
 
-export const ItemTitleWrapper = styled.div`
+export const InfoItemTitleWrapper = styled.div`
   display: flex;
+  justify-content: start;
   align-items: center;
   max-width: 615px;
   svg {

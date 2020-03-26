@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const Wrapper = styled.div`
+export const SliderWrapper = styled.div`
   background-color: ${props => props.theme.colors.background};
   padding: ${props => props.theme.spacing.s}rem 0;
   @media (min-width: ${props => props.theme.mediaQueries.large}px) {
@@ -18,14 +18,15 @@ export const Slide = styled.div`
     'slider-nav';
 `;
 
-export const TextContent = styled.div`
+export const SlideTextContent = styled.div`
   grid-area: slider-text;
   h2 {
     color: ${props => props.theme.colors.secondary};
+    margin: 0 auto;
   }
 `;
 
-export const ImageContent = styled.div`
+export const SlideImageWrapper = styled.div`
   grid-area: slider-image;
   display: flex;
   justify-content: center;
@@ -53,6 +54,10 @@ export const SlideTitle = styled.div`
   margin: ${props => `${props.theme.spacing.xs}rem 0 ${props.theme.spacing.xs}rem`};
   @media (min-width: ${props => props.theme.mediaQueries.large}px) {
     margin: ${props => `${props.theme.spacing.xs}rem 0`};
+  }
+
+  h3 {
+    margin: 0 auto;
   }
 `;
 

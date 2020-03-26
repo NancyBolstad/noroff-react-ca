@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 import { Form, StyledInput, Label, StyledLabelText, StyledTextArea, ErrorMessage } from './styles';
 import Button from '../Button';
-import Heading from '../Heading';
+import Typography from '../Typography';
 import contactSchema from '../../util/contactSchema';
 
 interface Props {}
@@ -15,13 +15,13 @@ const ContactForm: React.FC<Props> = () => {
 
   let history = useHistory();
 
-  const onSubmit = ()=> {
+  const onSubmit = () => {
     history.push('/success');
   };
 
   return (
     <>
-      <Heading content="Contact Us" isPrimaryColor />
+      <Typography element="h1" variant="h1" content="Contact Us" isPrimaryColor />
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Label>
           <StyledLabelText>

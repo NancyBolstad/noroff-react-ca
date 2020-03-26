@@ -1,25 +1,19 @@
 import React from 'react';
 import Typography from '../Typography';
 import { ButtonExternal } from '../Button';
-import { Result } from '../../types/data.d';
-import { Card as Wrapper, CardImage, LikeButton } from './styles';
+import { Result } from '../../types/data';
+import { CardWrapper, CardImage, LikeButton } from './styles';
 import { Context } from '../../context/GlobalContext';
-import { Types } from '../../context/reducers';
-import { heart } from '../../util/icons';
+import { Types } from '../../reducer/favoriteCardsReducer';
+import { heart, heartSolid } from '../../util/icons';
 
 export interface Props {
   card: Result;
 }
 
 export const Card: React.FunctionComponent<Props> = ({ card }) => {
-  const { favorites, dispatch } = React.useContext(Context);
+  const { dispatch } = React.useContext(Context);
   const [like, setLike] = React.useState(false);
-
-  React.useEffect(() => {
-    window.localStorage.setItem('favorites', JSON.stringify(favorites));
-  }, [favorites]);
-
-  console.log(favorites);
 
   React.useEffect(() => {
     if (like === true) {
@@ -37,7 +31,7 @@ export const Card: React.FunctionComponent<Props> = ({ card }) => {
     }
   }, [like, card, dispatch]);
   return (
-    <Wrapper>
+    <CardWrapper>
       <Typography element="h3" variant="h3" content={card.name} bottom={22} top={16} />
       {!!card.background_image && <CardImage src={card.background_image} alt={card.name} />}
       {!!card.released && (
@@ -70,9 +64,9 @@ export const Card: React.FunctionComponent<Props> = ({ card }) => {
         }}
         isLiked={like}
       >
-        {heart}
+        {like ? heartSolid : heart}
       </LikeButton>
-    </Wrapper>
+    </CardWrapper>
   );
 };
 

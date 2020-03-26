@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useParams } from 'react-router-dom';
-import HomeContent from '../../components/HomeContent';
+import MainContent from '../../components/MainContent';
 import CardDetails from '../../components/CardDetails';
 import { Root } from '../../types/details';
 import { API_BASE_URL } from '../../util/constants';
@@ -29,7 +29,7 @@ export const News: React.FunctionComponent<Props> = () => {
   }, [id]);
   return (
     <>
-      <HomeContent>
+      <MainContent>
         {!!data && (
           <CardDetails
             title={data.name}
@@ -40,7 +40,7 @@ export const News: React.FunctionComponent<Props> = () => {
             platforms={data.platforms}
           />
         )}
-      </HomeContent>
+      </MainContent>
     </>
   );
 };

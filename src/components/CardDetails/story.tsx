@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import CardDetails, { Props } from './';
+import CardDetails, { Props } from '.';
 
 const mockGenre = {
   id: 40891,
