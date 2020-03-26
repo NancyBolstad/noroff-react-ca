@@ -11,7 +11,6 @@ async function getAllCards() {
     const response = await fetch(API_BASE_URL);
     const data: Root = await response.json();
     list = data.results;
-    console.log(list);
 
     return data;
   } catch (err) {

@@ -17,9 +17,6 @@ export const Details: React.FunctionComponent<Props> = () => {
         const response = await fetch(`${API_BASE_URL}/${id}`);
         const data: Root = await response.json();
         setData(data);
-
-        console.log(data.platforms);
-
         return data;
       } catch (err) {
         throw err;

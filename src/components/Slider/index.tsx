@@ -6,7 +6,6 @@ import { Result } from '../../types/data';
 import {
   SliderWrapper,
   Slide,
-  SlideTextContent,
   SlideImageWrapper,
   SliderNav,
   SlideTitle,
@@ -57,13 +56,11 @@ export const Slider: React.FunctionComponent<Props> = ({ defaultIndex = 0, slide
         onSwipedRight={() => changeIndex(index + 1)}
       >
         <Slide>
-          <SlideTextContent>
-            <SlideTitle>
-              {currentSlide.name && (
-                <Typography element="h3" variant="h2" content={currentSlide.name} />
-              )}
-            </SlideTitle>
-          </SlideTextContent>
+          <SlideTitle>
+            {currentSlide.name && (
+              <Typography element="h3" variant="h2" content={currentSlide.name} />
+            )}
+          </SlideTitle>
           <SlideImageWrapper>
             {currentSlide.background_image && (
               <img src={currentSlide.background_image} alt={currentSlide.name} />
