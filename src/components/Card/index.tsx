@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Typography from '../Typography';
-import { ButtonExternal } from '../Button';
+import Button from '../Button';
 import { Result } from '../../types/data';
 import { CardWrapper, CardImage, LikeButton } from './styles';
 import { Context } from '../../context/GlobalContext';
@@ -46,15 +47,15 @@ export const Card: React.FunctionComponent<Props> = ({ card }) => {
       {!!card.rating && (
         <Typography element="span" variant="h4" content={`Rating: ${card.rating}`} bottom={16} />
       )}
-      <ButtonExternal
-        variant="primary"
-        size="medium"
-        href={`/details/${card.id}`}
+      <Link
+        to={'details/' + card.id}
         title={`Go to details about card ${card.name}`}
         aria-label={`Go to details about card ${card.name}`}
       >
-        View Details
-      </ButtonExternal>
+        <Button variant="primary" size="medium">
+          View Details
+        </Button>
+      </Link>
       <LikeButton
         variant="primary"
         size="medium"
