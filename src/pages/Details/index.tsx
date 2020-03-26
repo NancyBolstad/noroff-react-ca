@@ -7,7 +7,7 @@ import { API_BASE_URL } from '../../util/constants';
 
 interface Props {}
 
-export const News: React.FunctionComponent<Props> = () => {
+export const Details: React.FunctionComponent<Props> = () => {
   const [data, setData] = React.useState<Root>();
   let { id } = useParams();
 
@@ -45,4 +45,4 @@ export const News: React.FunctionComponent<Props> = () => {
   );
 };
 
-export default News;
+export default Details;
