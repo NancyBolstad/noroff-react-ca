@@ -1,10 +1,10 @@
 import React from 'react';
 import Typography from '../Typography';
 import { ButtonExternal } from '../Button';
-import { Result } from '../../types/data.d';
-import { Card as Wrapper, CardImage, LikeButton } from './styles';
+import { Result } from '../../types/data';
+import { CardWrapper, CardImage, LikeButton } from './styles';
 import { Context } from '../../context/GlobalContext';
-import { Types } from '../../context/reducers';
+import { Types } from '../../reducer/favoriteCardsReducer';
 import { heart } from '../../util/icons';
 
 export interface Props {
@@ -31,7 +31,7 @@ export const Card: React.FunctionComponent<Props> = ({ card }) => {
     }
   }, [like, card, dispatch]);
   return (
-    <Wrapper>
+    <CardWrapper>
       <Typography element="h3" variant="h3" content={card.name} bottom={22} top={16} />
       {!!card.background_image && <CardImage src={card.background_image} alt={card.name} />}
       {!!card.released && (
@@ -66,7 +66,7 @@ export const Card: React.FunctionComponent<Props> = ({ card }) => {
       >
         {heart}
       </LikeButton>
-    </Wrapper>
+    </CardWrapper>
   );
 };
 
