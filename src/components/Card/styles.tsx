@@ -39,7 +39,7 @@ export const LikeButton = styled(Button)<{ isLiked: boolean }>`
   svg {
     width: 48px;
     height: 48px;
-    stroke-width: 10px;
+    stroke-width: 30px;
     fill: ${props => props.theme.colors.primary};
     margin-top: ${props => props.theme.spacing.xs}rem;
   }

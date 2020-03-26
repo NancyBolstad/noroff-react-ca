@@ -5,7 +5,7 @@ import { Result } from '../../types/data';
 import { CardWrapper, CardImage, LikeButton } from './styles';
 import { Context } from '../../context/GlobalContext';
 import { Types } from '../../reducer/favoriteCardsReducer';
-import { heart } from '../../util/icons';
+import { heart, heartSolid } from '../../util/icons';
 
 export interface Props {
   card: Result;
@@ -64,7 +64,7 @@ export const Card: React.FunctionComponent<Props> = ({ card }) => {
         }}
         isLiked={like}
       >
-        {heart}
+        {like ? heartSolid : heart}
       </LikeButton>
     </CardWrapper>
   );
