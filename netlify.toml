@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "/"
+  to = "/details/:id"
+  status = 301
+}
