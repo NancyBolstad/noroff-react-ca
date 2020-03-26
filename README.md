@@ -1,40 +1,12 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/bdd0f41d-e9f1-4a07-8e42-3cb2b40eaf37/deploy-status)](https://app.netlify.com/sites/zen-kalam-ccfab6/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/073cbc06-47d5-4002-998e-48d2169366cb/deploy-status)](https://app.netlify.com/sites/agitated-kilby-44b818/deploys)
 
-## :satellite: This react app has two environments:
+## :satellite: Search RAWG Video Games
 
-### 1. Github page & master branch [production]:
+### Deploy:
 
-Visit: https://nancybolstad.github.io/noroff-react-ma3/
-
-This is served from the master branch. It includes all the compulsory requirements for this module assignment.
-
-#### Features:
-
-- TypeScript for development and Storybook for UI testing.
-- Routing with react-router-dom.
-- Used react-hook-form and yup for creating a simple login form.
-- Theme components via the <ThemeProvider> wrapper component, provided by Styled Components.
-- Lazy load components (with react.lazy and suspense).
-- Automated workflow: Github workflow and Netlify.
-
-### 2. Netlify & staging branch [development]:
-
-Visit: https://zen-kalam-ccfab6.netlify.com/
-
-This is deployed from the staging branch. It includes additional features that will be included in the next release.
-
-#### Features in the next release:
-
-- [x] Use Fetch API service
-- [x] Access local storage
-- [ ] Dark/light mode toggle
-- [ ] Dashboard after login
-- [ ] Add 404 error page
-- [ ] Jest test
-- [ ] Adding Google Custom Search
-- [ ] Testing SEO using Fetch as Google
+https://agitated-kilby-44b818.netlify.com/
 
 ## :paperclip: Available Scripts
 
