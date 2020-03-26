@@ -5,7 +5,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Loader from '../components/Loader';
 import Home from './Home';
-import News from './Details';
+import Details from './Details';
 import Favorites from './Favorites';
 
 const Contact = lazy(() => import('./Contact'));
@@ -37,7 +37,7 @@ const Layout: React.FunctionComponent<Props> = () => {
             </Route>
             <Route path="/details/:id">
               <Suspense fallback={<Loader />}>
-                <News />
+                <Details />
               </Suspense>
             </Route>
             <Route path="/">

@@ -7,7 +7,7 @@ import { API_BASE_URL } from '../../util/constants';
 
 interface Props {}
 
-export const News: React.FunctionComponent<Props> = () => {
+export const Details: React.FunctionComponent<Props> = () => {
   const [data, setData] = React.useState<Root>();
   let { id } = useParams();
 
@@ -17,9 +17,6 @@ export const News: React.FunctionComponent<Props> = () => {
         const response = await fetch(`${API_BASE_URL}/${id}`);
         const data: Root = await response.json();
         setData(data);
-
-        console.log(data.platforms);
-
         return data;
       } catch (err) {
         throw err;
@@ -45,4 +42,4 @@ export const News: React.FunctionComponent<Props> = () => {
   );
 };
 
-export default News;
+export default Details;

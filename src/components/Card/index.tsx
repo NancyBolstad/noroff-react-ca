@@ -60,7 +60,7 @@ export const Card: React.FunctionComponent<Props> = ({ card }) => {
         size="medium"
         onClick={e => {
           e.preventDefault();
-          setLike(like ? false : true);
+          setLike(!like);
         }}
         isLiked={like}
       >

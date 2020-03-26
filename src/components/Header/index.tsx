@@ -16,13 +16,13 @@ const Header: React.FunctionComponent = () => {
       <HeaderWrapper>
         <HeaderNav>
           <HeaderNavLinkList>
-            <HeaderNavLink to="/favorites">Favorites</HeaderNavLink>
+            <li>
+              <HeaderNavLink to="/favorites">Favorites</HeaderNavLink>
+            </li>
           </HeaderNavLinkList>
           <SiteLogo to="/">RAWG</SiteLogo>
           <HeaderMenuRight>
-            <li>
-              <HeaderButton to="/contact">Contact</HeaderButton>
-            </li>
+            <HeaderButton to="/contact">Contact</HeaderButton>
           </HeaderMenuRight>
         </HeaderNav>
       </HeaderWrapper>
