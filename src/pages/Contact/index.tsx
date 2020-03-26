@@ -1,5 +1,5 @@
 import * as React from 'react';
-import HomeContent from '../../components/HomeContent';
+import MainContent from '../../components/MainContent';
 import ContactForm from '../../components/ContactForm';
 
 interface Props {}
@@ -7,9 +7,9 @@ interface Props {}
 export const Contact: React.FunctionComponent<Props> = () => {
   return (
     <>
-      <HomeContent>
+      <MainContent>
         <ContactForm />
-      </HomeContent>
+      </MainContent>
     </>
   );
 };
