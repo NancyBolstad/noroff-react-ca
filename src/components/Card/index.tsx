@@ -1,6 +1,6 @@
 import React from 'react';
 import Typography from '../Typography';
-import { ButtonExternal } from '../Button';
+import { ButtonInternal } from '../Button';
 import { Result } from '../../types/data';
 import { CardWrapper, CardImage, LikeButton } from './styles';
 import { Context } from '../../context/GlobalContext';
@@ -46,15 +46,9 @@ export const Card: React.FunctionComponent<Props> = ({ card }) => {
       {!!card.rating && (
         <Typography element="span" variant="h4" content={`Rating: ${card.rating}`} bottom={16} />
       )}
-      <ButtonExternal
-        variant="primary"
-        size="medium"
-        href={`/details/${card.id}`}
-        title={`Go to details about card ${card.name}`}
-        aria-label={`Go to details about card ${card.name}`}
-      >
+      <ButtonInternal variant="primary" size="medium" to={`/details/${card.id}`}>
         View Details
-      </ButtonExternal>
+      </ButtonInternal>
       <LikeButton
         variant="primary"
         size="medium"
