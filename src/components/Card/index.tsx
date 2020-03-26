@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Typography from '../Typography';
 import { ButtonExternal } from '../Button';
 import { Result } from '../../types/data';
@@ -47,7 +46,6 @@ export const Card: React.FunctionComponent<Props> = ({ card }) => {
       {!!card.rating && (
         <Typography element="span" variant="h4" content={`Rating: ${card.rating}`} bottom={16} />
       )}
-      <Link to={`/details/${card.id}`}>Try</Link>
       <ButtonExternal
         variant="primary"
         size="medium"
@@ -62,7 +60,7 @@ export const Card: React.FunctionComponent<Props> = ({ card }) => {
         size="medium"
         onClick={e => {
           e.preventDefault();
-          setLike(like ? false : true);
+          setLike(!like);
         }}
         isLiked={like}
       >
