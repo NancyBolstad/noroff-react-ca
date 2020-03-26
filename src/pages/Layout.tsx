@@ -2,6 +2,7 @@ import React, { lazy, Suspense } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import ThemeWrapper from '../components/ThemeWrapper';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import Loader from '../components/Loader';
 import Home from './Home';
 import News from './Details';
@@ -45,6 +46,7 @@ const Layout: React.FunctionComponent<Props> = () => {
               </Suspense>
             </Route>
           </Switch>
+          <Footer />
         </div>
       </BrowserRouter>
     </ThemeWrapper>
