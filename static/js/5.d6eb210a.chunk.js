@@ -1,0 +1,2 @@
+(this["webpackJsonpnoroff-react-ca"]=this["webpackJsonpnoroff-react-ca"]||[]).push([[5],{62:function(e,t,n){"use strict";n.r(t),n.d(t,"Success",(function(){return u}));var r=n(0),a=n(5),c=n(16),o=n(26),u=function(){return r.createElement(c.a,null,r.createElement(a.a,{element:"h1",variant:"h1",content:"Thank you for getting in touched!",isPrimaryColor:!0}),r.createElement(o.a,null))};t.default=u}}]);
+//# sourceMappingURL=5.d6eb210a.chunk.js.map
