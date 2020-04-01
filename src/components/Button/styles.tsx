@@ -8,8 +8,8 @@ export const Button = styled.button<ButtonProps>`
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  text-decoration: none;
   width: fit-content;
+  text-decoration: none;
   border: 2px solid transparent;
   transition: border-color 0.15s ease-in-out, background-color 0.15s ease-in-out;
   &:disabled {
