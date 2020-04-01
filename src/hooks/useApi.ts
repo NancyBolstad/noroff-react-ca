@@ -26,16 +26,13 @@ function useApi<T>(opts: Opts<T>): UseApiInterface<T> {
       const url = opts.queryParams ? `${opts.endpoint}/${opts.queryParams}` : `${opts.endpoint}`;
 
       const response = await fetch(url);
-
-      const data = await response.json();
-
       if (response.status === 404) {
         throw new Error('pageNotFound');
       } else if (response.status === 500) {
         throw new Error('internalServerError');
-      } else if (!response.status.toString().startsWith('2')) {
-        throw await response.json();
       }
+
+      const data = await response.json();
 
       setLoading(false);
       setData(data as T);
