@@ -5,12 +5,13 @@ import CardDetails from '../../components/CardDetails';
 import { Root } from '../../types/details';
 import { API_BASE_URL, mockCardDetails } from '../../util/constants';
 import useApi from '../../hooks/useApi';
+import Loader from '../../components/Loader';
 
 interface Props {}
 
 export const Details: React.FunctionComponent<Props> = () => {
   let { id } = useParams();
-  const { data } = useApi<Root>({
+  const { data, loading } = useApi<Root>({
     endpoint: API_BASE_URL,
     queryParams: id,
     fetchOnMount: true,
@@ -20,7 +21,8 @@ export const Details: React.FunctionComponent<Props> = () => {
   return (
     <>
       <MainContent>
-        {!!data && (
+        {loading && <Loader />}
+        {!!data && !loading && (
           <CardDetails
             title={data.name}
             image={data.background_image}

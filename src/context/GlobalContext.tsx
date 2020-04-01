@@ -1,7 +1,8 @@
 import React from 'react';
 import { Root, Result } from '../types/data';
-import { API_BASE_URL } from '../util/constants';
+import { API_BASE_URL, mockResponse } from '../util/constants';
 import { favoriteCardsReducer, FavoriteActions } from '../reducer/favoriteCardsReducer';
+import useApi from '../hooks/useApi';
 
 interface Props {}
 
@@ -18,31 +19,19 @@ export const Context = React.createContext<GlobalDataProps>({
 });
 
 export const GlobalContext: React.FunctionComponent<Props> = ({ children }) => {
-  const [data, setData] = React.useState<Result[]>([]);
+  const { data } = useApi<Root>({
+    endpoint: API_BASE_URL,
+    fetchOnMount: true,
+    initialData: mockResponse,
+  });
   const initializeState: Result[] = [];
 
   const [state, dispatch] = React.useReducer(favoriteCardsReducer, initializeState);
 
-  async function getAllCards() {
-    try {
-      const response = await fetch(API_BASE_URL);
-      const data: Root = await response.json();
-      setData(data.results);
-
-      return data;
-    } catch (err) {
-      throw err;
-    }
-  }
-
-  React.useEffect(() => {
-    getAllCards();
-  }, []);
-
   return (
     <Context.Provider
       value={{
-        default: data,
+        default: data.results,
         favorites: state,
         dispatch: dispatch,
       }}
