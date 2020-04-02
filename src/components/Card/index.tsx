@@ -13,7 +13,7 @@ export interface Props {
 
 export const Card: React.FunctionComponent<Props> = ({ card }) => {
   const { dispatch } = React.useContext(Context);
-  const [like, setLike] = React.useState(false);
+  const [like, setLike] = React.useState<boolean>(false);
 
   React.useEffect(() => {
     if (like === true) {

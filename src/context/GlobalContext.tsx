@@ -1,8 +1,10 @@
 import React from 'react';
-import { Root, Result } from '../types/data';
-import { API_BASE_URL, mockResponse } from '../util/constants';
-import { favoriteCardsReducer, FavoriteActions } from '../reducer/favoriteCardsReducer';
 import useApi from '../hooks/useApi';
+import { FavoriteActions, favoriteCardsReducer } from '../reducer/favoriteCardsReducer';
+import { Result, Root } from '../types/data';
+import { API_BASE_URL, mockResponse, FAVORITES_KEY } from '../util/constants';
+import isBrowser from '../util/isBrowser';
+import Storage from '../util/storage';
 
 interface Props {}
 
@@ -24,15 +26,35 @@ export const GlobalContext: React.FunctionComponent<Props> = ({ children }) => {
     fetchOnMount: true,
     initialData: mockResponse,
   });
-  const initializeState: Result[] = [];
+  //@ts-ignore
+  const [initializeState] = React.useState<Result[]>(() => {
+    const storage = new Storage();
+    const localData: Result[] | null = storage.getUnserialize(FAVORITES_KEY);
+    if (localData !== null) {
+      return localData;
+    }
+  });
 
   const [state, dispatch] = React.useReducer(favoriteCardsReducer, initializeState);
+
+  React.useEffect(() => {
+    if (isBrowser()) {
+      const storage = new Storage();
+
+      if (!!state) {
+        console.log(11111);
+        storage.setSerialize(FAVORITES_KEY, state);
+      }
+    }
+  }, [state, initializeState]);
+
+  console.log({ initializeState, state });
 
   return (
     <Context.Provider
       value={{
         default: data.results,
-        favorites: state,
+        favorites: initializeState,
         dispatch: dispatch,
       }}
     >
