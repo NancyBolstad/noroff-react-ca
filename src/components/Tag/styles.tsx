@@ -29,13 +29,17 @@ export const CategoriesButtonWrapper = styled.div`
 export const CategoriesButton = styled(Button)<{ active?: boolean }>`
   font-weight: bold;
   flex: 1;
-  border-bottom: 2px solid ${props => props.theme.colors.secondaryVariant};
+  border-bottom: 2px solid ${props => props.theme.colors.secondary};
+
+  @media (min-width: 600px) {
+    padding: 10px 20px;
+  }
 
   ${props =>
     props.active === true &&
     css`
-      background-color: ${props => props.theme.colors.secondaryVariant};
-      color: ${props => props.theme.colors.background};
+      background-color: ${props => props.theme.colors.secondary};
+      color: white;
     `}
 `;
 
