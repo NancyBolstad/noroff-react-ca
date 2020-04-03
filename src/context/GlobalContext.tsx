@@ -4,7 +4,8 @@ import { FavoriteActions, favoriteCardsReducer } from '../reducer/favoriteCardsR
 import { Result, Root } from '../types/data';
 import { API_BASE_URL, mockResponse, FAVORITES_KEY } from '../util/constants';
 import isBrowser from '../util/isBrowser';
-import Storage from '../util/storage';
+import Favorites from '../pages/Favorites';
+//import Storage from '../util/storage';
 
 interface Props {}
 
@@ -13,8 +14,6 @@ interface GlobalDataProps {
   favorites: Result[];
   dispatch: React.Dispatch<FavoriteActions>;
 }
-
-const storage = new Storage();
 
 export const Context = React.createContext<GlobalDataProps>({
   default: [],
@@ -28,21 +27,21 @@ export const GlobalContext: React.FunctionComponent<Props> = ({ children }) => {
     fetchOnMount: true,
     initialData: mockResponse,
   });
-  //@ts-ignore
-  const [localData, setLocalData] = React.useState<Result[]>([]);
+  const [localData] = React.useState<Result[]>(() => {
+    const data = localStorage.getItem(FAVORITES_KEY);
+
+    return data !== null ? JSON.parse(data) : [];
+  });
+
+  console.log(localData);
+
+  const [state, dispatch] = React.useReducer(favoriteCardsReducer, localData);
 
   React.useEffect(() => {
     if (isBrowser()) {
-      const storageTheme = storage.getUnserialize<Result[]>(FAVORITES_KEY);
-
-      if (storageTheme !== null) {
-        console.log(11111);
-        setLocalData(storageTheme);
-      }
+      localStorage.setItem(FAVORITES_KEY, JSON.stringify(state));
     }
-  }, []);
-
-  const [state, dispatch] = React.useReducer(favoriteCardsReducer, localData);
+  }, [state]);
 
   console.log({ localData, state });
 
@@ -50,7 +49,7 @@ export const GlobalContext: React.FunctionComponent<Props> = ({ children }) => {
     <Context.Provider
       value={{
         default: data.results,
-        favorites: localData,
+        favorites: state,
         dispatch: dispatch,
       }}
     >
