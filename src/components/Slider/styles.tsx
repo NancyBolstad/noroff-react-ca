@@ -93,7 +93,7 @@ export const PrevNextButton = styled.a<{ next?: boolean }>`
   height: 38px;
   border-radius: 50%;
   color: ${props => props.theme.colors.primary};
-  background-color: ${props => props.theme.colors.secondaryVariant};
+  background-color: ${props => props.theme.colors.secondary};
   box-shadow: none;
   cursor: pointer;
 

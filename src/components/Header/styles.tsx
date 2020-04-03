@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom';
 
 export const HeaderWrapper = styled.header`
   width: 100%;
-  background: ${props => props.theme.colors.secondaryVariant};
+  background: ${props => props.theme.colors.secondary};
   color: ${props => props.theme.colors.onSecondary};
+  height: 76px;
 `;
 
 export const HeaderNav = styled.nav`
@@ -61,4 +62,5 @@ export const HeaderMenuLeft = styled.div`
 
 export const HeaderMenuRight = styled.div`
   list-style-type: none;
+  display: flex;
 `;

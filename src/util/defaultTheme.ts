@@ -12,8 +12,8 @@ import {
 const defaultColors: IColors = {
   primary: '#2B2928',
   primaryVariant: '#555453',
-  secondary: '#3f18aa',
-  secondaryVariant: '#3d17a5',
+  secondary: '#9933FF',
+  secondaryVariant: '#642D96',
   background: '#ffffff',
   surface: '#f7f8f6',
   error: '#ff0000',
@@ -21,6 +21,21 @@ const defaultColors: IColors = {
   onSecondary: '#ffffff',
   onBackground: '#2B2928',
   onSurface: '#2B2928',
+  onError: '#ffffff',
+};
+
+const darkThemeColors: IColors = {
+  primary: '#f7f8f6',
+  primaryVariant: '#ffffff',
+  secondary: '#9933FF',
+  secondaryVariant: '#642D96',
+  background: '#000000',
+  surface: '#000000',
+  error: '#ff0000',
+  onPrimary: '#f7f8f6',
+  onSecondary: '#ffffff',
+  onBackground: '#f7f8f6',
+  onSurface: '#f7f8f6',
   onError: '#ffffff',
 };
 
@@ -128,6 +143,13 @@ export const defaultTheme: Theme = {
   fonts: defaultFonts,
   mediaQueries: defaultMediaQueries,
   colors: defaultColors,
+};
+
+export const darkTheme: Theme = {
+  spacing: defaultSpacing,
+  fonts: defaultFonts,
+  mediaQueries: defaultMediaQueries,
+  colors: darkThemeColors,
 };
 
 export default defaultTheme;
