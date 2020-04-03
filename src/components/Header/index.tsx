@@ -6,12 +6,12 @@ import {
   HeaderNavLinkList,
   HeaderNavLink,
   SiteLogo,
+  ModeSwitchButton,
+  TogglerSlider,
 } from './styles';
 import ThemeWrapper from '../ThemeWrapper';
-import Button from '../Button';
 import { ContrastContext } from '../../context/Contrast';
 import { Context } from '../../context/GlobalContext';
-import { sun, moon } from '../../util/icons';
 
 const Header: React.FunctionComponent = () => {
   const { theme, toggleContrast } = React.useContext(ContrastContext);
@@ -32,9 +32,15 @@ const Header: React.FunctionComponent = () => {
             </li>
           </HeaderNavLinkList>
           <HeaderMenuRight>
-            <Button variant="secondary" size="small" onClick={() => toggleContrast()}>
-              {theme === 'default' ? sun : moon}
-            </Button>
+            <ModeSwitchButton onClick={() => toggleContrast()}>
+              <span role="img" aria-label="default mode">
+                🌞
+              </span>
+              <span role="img" aria-label="dark mode">
+                🌛
+              </span>
+              <TogglerSlider mode={theme} />
+            </ModeSwitchButton>
           </HeaderMenuRight>
         </HeaderNav>
       </HeaderWrapper>

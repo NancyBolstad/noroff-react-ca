@@ -1,27 +1,29 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const HeaderWrapper = styled.header`
   width: 100%;
   background: ${props => props.theme.colors.secondary};
   color: ${props => props.theme.colors.onSecondary};
-  height: 76px;
 `;
 
 export const HeaderNav = styled.nav`
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  padding: ${props => props.theme.spacing.xs}rem;
+  padding: 0 ${props => props.theme.spacing.m}rem;
 `;
 
 export const HeaderNavLinkList = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
   list-style-type: none;
   padding: 0;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 export const HeaderNavLink = styled(Link)`
@@ -63,4 +65,47 @@ export const HeaderMenuLeft = styled.div`
 export const HeaderMenuRight = styled.div`
   list-style-type: none;
   display: flex;
+`;
+
+export const ModeSwitchButton = styled.a`
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  background-color: black;
+  border-radius: 20px;
+  position: relative;
+  width: 5rem;
+  height: 2.1rem;
+  min-width: none;
+  font-size: 1.5rem;
+  padding: 0 0.5rem;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: black;
+  }
+`;
+
+export const TogglerSlider = styled.span<{ mode: string }>`
+  width: 2.6rem;
+  height: 2.1rem;
+  position: absolute;
+  top: 0;
+  background-color: white;
+  box-shadow: 1px 2px 4px black;
+  border-radius: 20px;
+  transition: transform 0.1s ease-in-out;
+
+  ${props =>
+    props.mode === 'default' &&
+    css`
+      right: 0;
+    `}
+
+  ${props =>
+    props.mode === 'dark' &&
+    css`
+      left: 0;
+    `}
 `;
