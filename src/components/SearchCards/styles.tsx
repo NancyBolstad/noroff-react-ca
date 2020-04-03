@@ -22,6 +22,7 @@ export const SearchFormWrapper = styled.div`
   input[type='text'] {
     border: 2px solid ${props => props.theme.colors.primaryVariant};
     background: ${props => props.theme.colors.surface};
+    color: ${props => props.theme.colors.primaryVariant};
     white-space: nowrap;
     padding: 0.55rem 0.75rem;
     font-size: 1.1em;
@@ -53,6 +54,7 @@ export const SearchFormWrapper = styled.div`
   }
   input[type='text']:focus {
     background: #ffffff;
+    color: black;
     outline: none;
     border: 1px solid ${props => props.theme.colors.secondary};
   }
