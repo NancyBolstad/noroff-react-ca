@@ -1,29 +1,29 @@
 {
   "files": {
     "main.css": "/noroff-react-ca/static/css/main.5facb584.chunk.css",
-    "main.js": "/noroff-react-ca/static/js/main.0d357864.chunk.js",
-    "main.js.map": "/noroff-react-ca/static/js/main.0d357864.chunk.js.map",
-    "runtime-main.js": "/noroff-react-ca/static/js/runtime-main.de704bb7.js",
-    "runtime-main.js.map": "/noroff-react-ca/static/js/runtime-main.de704bb7.js.map",
-    "static/js/2.ba2e6590.chunk.js": "/noroff-react-ca/static/js/2.ba2e6590.chunk.js",
-    "static/js/2.ba2e6590.chunk.js.map": "/noroff-react-ca/static/js/2.ba2e6590.chunk.js.map",
-    "static/js/3.18ba03cf.chunk.js": "/noroff-react-ca/static/js/3.18ba03cf.chunk.js",
-    "static/js/3.18ba03cf.chunk.js.map": "/noroff-react-ca/static/js/3.18ba03cf.chunk.js.map",
-    "static/js/4.417177a1.chunk.js": "/noroff-react-ca/static/js/4.417177a1.chunk.js",
-    "static/js/4.417177a1.chunk.js.map": "/noroff-react-ca/static/js/4.417177a1.chunk.js.map",
-    "static/js/5.d6eb210a.chunk.js": "/noroff-react-ca/static/js/5.d6eb210a.chunk.js",
-    "static/js/5.d6eb210a.chunk.js.map": "/noroff-react-ca/static/js/5.d6eb210a.chunk.js.map",
+    "main.js": "/noroff-react-ca/static/js/main.adc141c7.chunk.js",
+    "main.js.map": "/noroff-react-ca/static/js/main.adc141c7.chunk.js.map",
+    "runtime-main.js": "/noroff-react-ca/static/js/runtime-main.ce8c7232.js",
+    "runtime-main.js.map": "/noroff-react-ca/static/js/runtime-main.ce8c7232.js.map",
+    "static/js/2.7d785d02.chunk.js": "/noroff-react-ca/static/js/2.7d785d02.chunk.js",
+    "static/js/2.7d785d02.chunk.js.map": "/noroff-react-ca/static/js/2.7d785d02.chunk.js.map",
+    "static/js/3.aff622b0.chunk.js": "/noroff-react-ca/static/js/3.aff622b0.chunk.js",
+    "static/js/3.aff622b0.chunk.js.map": "/noroff-react-ca/static/js/3.aff622b0.chunk.js.map",
+    "static/js/4.1e326f6a.chunk.js": "/noroff-react-ca/static/js/4.1e326f6a.chunk.js",
+    "static/js/4.1e326f6a.chunk.js.map": "/noroff-react-ca/static/js/4.1e326f6a.chunk.js.map",
+    "static/js/5.c03c9811.chunk.js": "/noroff-react-ca/static/js/5.c03c9811.chunk.js",
+    "static/js/5.c03c9811.chunk.js.map": "/noroff-react-ca/static/js/5.c03c9811.chunk.js.map",
     "index.html": "/noroff-react-ca/index.html",
-    "precache-manifest.36bea27a66c27a2a0b342f05290f6689.js": "/noroff-react-ca/precache-manifest.36bea27a66c27a2a0b342f05290f6689.js",
+    "precache-manifest.bc0b1baba9aa501e84d2aee2cbf4ea50.js": "/noroff-react-ca/precache-manifest.bc0b1baba9aa501e84d2aee2cbf4ea50.js",
     "service-worker.js": "/noroff-react-ca/service-worker.js",
     "static/css/main.5facb584.chunk.css.map": "/noroff-react-ca/static/css/main.5facb584.chunk.css.map",
-    "static/js/2.ba2e6590.chunk.js.LICENSE.txt": "/noroff-react-ca/static/js/2.ba2e6590.chunk.js.LICENSE.txt",
-    "static/js/3.18ba03cf.chunk.js.LICENSE.txt": "/noroff-react-ca/static/js/3.18ba03cf.chunk.js.LICENSE.txt"
+    "static/js/2.7d785d02.chunk.js.LICENSE.txt": "/noroff-react-ca/static/js/2.7d785d02.chunk.js.LICENSE.txt",
+    "static/js/3.aff622b0.chunk.js.LICENSE.txt": "/noroff-react-ca/static/js/3.aff622b0.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.de704bb7.js",
-    "static/js/2.ba2e6590.chunk.js",
+    "static/js/runtime-main.ce8c7232.js",
+    "static/js/2.7d785d02.chunk.js",
     "static/css/main.5facb584.chunk.css",
-    "static/js/main.0d357864.chunk.js"
+    "static/js/main.adc141c7.chunk.js"
   ]
 }
