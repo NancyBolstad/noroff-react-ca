@@ -13,17 +13,28 @@ export const HeaderNav = styled.nav`
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  padding: 0 ${props => props.theme.spacing.m}rem;
+  padding: 0 ${props => props.theme.spacing.s}rem;
+
+  @media (min-width: ${props => props.theme.mediaQueries.large}px) {
+    padding: 0 ${props => props.theme.spacing.l}rem;
+    height: 68px;
+  }
 `;
 
 export const HeaderNavLinkList = styled.ul`
   display: flex;
-  flex-wrap: wrap;
   list-style-type: none;
   padding: 0;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  padding: 0;
+  list-style-type: none;
+  -webkit-padding-start: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
 `;
 
 export const HeaderNavLink = styled(Link)`
