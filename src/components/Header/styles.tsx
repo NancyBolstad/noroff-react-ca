@@ -5,6 +5,7 @@ export const HeaderWrapper = styled.header`
   width: 100%;
   background: ${props => props.theme.colors.secondary};
   color: ${props => props.theme.colors.onSecondary};
+  position: fixed;
 `;
 
 export const HeaderNav = styled.nav`
