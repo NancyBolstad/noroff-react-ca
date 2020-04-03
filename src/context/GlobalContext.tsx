@@ -50,7 +50,7 @@ export const GlobalContext: React.FunctionComponent<Props> = ({ children }) => {
     <Context.Provider
       value={{
         default: data.results,
-        favorites: state,
+        favorites: localData,
         dispatch: dispatch,
       }}
     >
