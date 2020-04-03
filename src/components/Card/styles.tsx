@@ -44,7 +44,7 @@ export const LikeButton = styled(Button)<{ isLiked: boolean }>`
     margin-top: ${props => props.theme.spacing.xs}rem;
   }
   ${props =>
-    props.isLiked &&
+    props.isLiked === true &&
     css`
       svg {
         fill: ${props => props.theme.colors.secondary};

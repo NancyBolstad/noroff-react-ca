@@ -6,17 +6,23 @@ import { CardWrapper, CardImage, LikeButton } from './styles';
 import { Context } from '../../context/GlobalContext';
 import { Types } from '../../reducer/favoriteCardsReducer';
 import { heart, heartSolid } from '../../util/icons';
+import Storage from '../../util/storage';
+import { FAVORITES_KEY } from '../../util/constants';
 
 export interface Props {
   card: Result;
 }
 
 export const Card: React.FunctionComponent<Props> = ({ card }) => {
-  const { dispatch } = React.useContext(Context);
-  const [like, setLike] = React.useState<boolean>(false);
+  const { favorites, dispatch } = React.useContext(Context);
+  const [like, setLike] = React.useState(false);
 
-  React.useEffect(() => {
-    if (like === true) {
+  function handleLikeDispatch() {
+    console.log(2222222);
+    console.log(!like);
+    setLike(!like);
+
+    if (!like === true) {
       dispatch({
         type: Types.Like,
         payload: card,
@@ -29,7 +35,11 @@ export const Card: React.FunctionComponent<Props> = ({ card }) => {
         },
       });
     }
-  }, [like, card, dispatch]);
+  }
+
+  const storage = new Storage();
+  storage.setSerialize(FAVORITES_KEY, favorites);
+
   return (
     <CardWrapper>
       <Typography
@@ -68,7 +78,7 @@ export const Card: React.FunctionComponent<Props> = ({ card }) => {
         size="medium"
         onClick={e => {
           e.preventDefault();
-          setLike(!like);
+          handleLikeDispatch();
         }}
         isLiked={like}
       >

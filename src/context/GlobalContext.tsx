@@ -44,21 +44,13 @@ export const GlobalContext: React.FunctionComponent<Props> = ({ children }) => {
 
   const [state, dispatch] = React.useReducer(favoriteCardsReducer, localData);
 
-  React.useEffect(() => {
-    if (isBrowser()) {
-      if (!!state) {
-        storage.setSerialize(FAVORITES_KEY, state);
-      }
-    }
-  }, [state]);
-
   console.log({ localData, state });
 
   return (
     <Context.Provider
       value={{
         default: data.results,
-        favorites: localData,
+        favorites: state,
         dispatch: dispatch,
       }}
     >
