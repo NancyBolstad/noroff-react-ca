@@ -21,7 +21,9 @@ const Header: React.FunctionComponent = () => {
       <HeaderWrapper>
         <HeaderNav>
           <HeaderNavLinkList>
-            <SiteLogo to="/">RAWG</SiteLogo>
+            <li>
+              <SiteLogo to="/">RAWG</SiteLogo>
+            </li>
             <li>
               <HeaderNavLink to="/favorites">
                 Favorites {favorites.length >= 1 ? favorites.length : null}

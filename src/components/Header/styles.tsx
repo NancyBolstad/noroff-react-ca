@@ -55,8 +55,8 @@ export const HeaderNavLink = styled(Link)`
 `;
 
 export const SiteLogo = styled(HeaderNavLink)`
-  color: yellow;
-  font-weight: 900;
+  color: black;
+  font-weight: bold;
   font-size: 2rem;
 `;
 
@@ -91,6 +91,7 @@ export const ModeSwitchButton = styled.a`
   min-width: none;
   font-size: 1.5rem;
   padding: 0 0.5rem;
+  cursor: pointer;
 
   &:hover,
   &:active,

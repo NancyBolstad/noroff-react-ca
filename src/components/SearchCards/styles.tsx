@@ -30,6 +30,10 @@ export const SearchFormWrapper = styled.div`
     height: 4rem;
     flex-grow: 1;
     width: 40vw;
+
+    ::placeholder {
+      color: ${props => props.theme.colors.primaryVariant};
+    }
   }
   button[type='submit'] {
     background-color: ${props => props.theme.colors.secondary};
