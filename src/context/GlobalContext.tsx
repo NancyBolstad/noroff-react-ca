@@ -4,8 +4,7 @@ import { FavoriteActions, favoriteCardsReducer } from '../reducer/favoriteCardsR
 import { Result, Root } from '../types/data';
 import { API_BASE_URL, mockResponse, FAVORITES_KEY } from '../util/constants';
 import isBrowser from '../util/isBrowser';
-import Favorites from '../pages/Favorites';
-//import Storage from '../util/storage';
+import Storage from '../util/storage';
 
 interface Props {}
 
@@ -27,19 +26,20 @@ export const GlobalContext: React.FunctionComponent<Props> = ({ children }) => {
     fetchOnMount: true,
     initialData: mockResponse,
   });
-  const [localData] = React.useState<Result[]>(() => {
-    const data = localStorage.getItem(FAVORITES_KEY);
+  const [localData, setLocalData] = React.useState<Result[]>(() => {
+    const storage = new Storage();
+    const localFavorites = storage.get(FAVORITES_KEY);
 
-    return data !== null ? JSON.parse(data) : [];
+    return localFavorites !== null ? JSON.parse(localFavorites) : [];
   });
-
-  console.log(localData);
 
   const [state, dispatch] = React.useReducer(favoriteCardsReducer, localData);
 
   React.useEffect(() => {
     if (isBrowser()) {
-      localStorage.setItem(FAVORITES_KEY, JSON.stringify(state));
+      const storage = new Storage();
+      storage.setSerialize(FAVORITES_KEY, state);
+      setLocalData(state);
     }
   }, [state]);
 
