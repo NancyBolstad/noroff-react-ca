@@ -106,7 +106,7 @@ export const TogglerSlider = styled.span<{ mode: string }>`
   height: 2.1rem;
   position: absolute;
   top: 0;
-  background-color: white;
+  background-color: #f7f8f6;
   box-shadow: 1px 2px 4px black;
   border-radius: 20px;
   transition: transform 0.1s ease-in-out;
