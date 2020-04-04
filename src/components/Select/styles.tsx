@@ -22,7 +22,8 @@ export const Label = styled.label`
 
 export const StyledSelect = styled.select`
   height: 40px;
-  width: 100%;
+  width: 9.8rem;
+  margin-left: ${props => props.theme.spacing.xs}rem;
   background-color: ${props => props.theme.colors.background};
   color: ${props => props.theme.colors.primary};
   background-size: 20px 20px;
@@ -44,8 +45,8 @@ export const StyledSelect = styled.select`
 export const Arrow = styled.div`
   position: absolute;
   pointer-events: none;
-  right: 1rem;
-  top: 38px;
+  right: 0.7rem;
+  top: 1.1875rem;
 
   svg {
     width: 10px;
