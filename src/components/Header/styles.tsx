@@ -103,7 +103,7 @@ export const ModeSwitchButton = styled.a`
 `;
 
 export const TogglerSlider = styled.span<{ mode: string }>`
-  width: 2.6rem;
+  width: 2rem;
   height: 2.1rem;
   position: absolute;
   top: 0;

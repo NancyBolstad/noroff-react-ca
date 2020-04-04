@@ -39,7 +39,18 @@ const Header: React.FunctionComponent = () => {
       <HeaderWrapper>
         <HeaderNav>
           <HeaderMenuLeft>
-            <SiteLogo to="/">RAWG</SiteLogo>
+            <SiteLogo
+              to="/"
+              onClick={e => {
+                if (!isDesktop) {
+                  e.preventDefault();
+                  setIsMobileMenuOpen(false);
+                  window.location.assign('/');
+                }
+              }}
+            >
+              RAWG
+            </SiteLogo>
             {isDesktop && (
               <HeaderNavLinkList>
                 <li>
@@ -78,8 +89,26 @@ const Header: React.FunctionComponent = () => {
       </HeaderWrapper>
       {!isDesktop && isMobileMenuOpen && (
         <MobileMenuWrapper>
-          <HeaderNavLink to="/favorites">Favorites ({favorites.length})</HeaderNavLink>
-          <HeaderNavLink to="/contact">Contact</HeaderNavLink>
+          <HeaderNavLink
+            to="/favorites"
+            onClick={e => {
+              e.preventDefault();
+              setIsMobileMenuOpen(false);
+              window.location.assign('/favorites');
+            }}
+          >
+            Favorites ({favorites.length})
+          </HeaderNavLink>
+          <HeaderNavLink
+            to="/contact"
+            onClick={e => {
+              e.preventDefault();
+              setIsMobileMenuOpen(false);
+              window.location.assign('/contact');
+            }}
+          >
+            Contact
+          </HeaderNavLink>
         </MobileMenuWrapper>
       )}
     </>
