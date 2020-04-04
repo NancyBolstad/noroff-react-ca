@@ -22,7 +22,7 @@ export const SearchCards: React.FunctionComponent<Props> = ({ handler }) => {
             className="searchInput"
             type="text"
             aria-label="Search"
-            placeholder="Search her"
+            placeholder="Search for video games"
             value={searchValue}
             onChange={(e: any) => {
               e.preventDefault();
