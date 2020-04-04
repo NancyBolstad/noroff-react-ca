@@ -52,7 +52,6 @@ export const Home: React.FunctionComponent<Props> = () => {
   }, [loading]);
 
   React.useEffect(() => {
-    console.log(1111111);
     setCurrentData(localContext.default);
   }, [localContext]);
 
