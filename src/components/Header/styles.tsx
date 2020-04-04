@@ -7,6 +7,7 @@ export const HeaderWrapper = styled.header`
   background: ${props => props.theme.colors.secondary};
   color: ${props => props.theme.colors.onSecondary};
   position: fixed;
+  z-index: 999;
 `;
 
 export const HeaderNav = styled.nav`
@@ -48,7 +49,6 @@ export const HeaderNavLink = styled(Link)`
   &:hover {
     opacity: 0.8;
   }
-
   @media (min-width: ${props => props.theme.mediaQueries.large}px) {
     padding: 0.5rem 1rem;
   }

@@ -43,8 +43,6 @@ export const GlobalContext: React.FunctionComponent<Props> = ({ children }) => {
     }
   }, [state]);
 
-  console.log({ localData, state });
-
   return (
     <Context.Provider
       value={{

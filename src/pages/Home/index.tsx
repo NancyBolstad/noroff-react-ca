@@ -6,13 +6,14 @@ import { Result } from '../../types/data';
 import SearchCards from '../../components/SearchCards/SearchCards';
 import CardsList from '../../components/CardsList/';
 import Loader from '../../components/Loader';
+import Select from '../../components/Select';
 
 interface Props {}
 
 export const Home: React.FunctionComponent<Props> = () => {
   const localContext = React.useContext(Context);
+  const [currentData, setCurrentData] = React.useState<Result[]>([]);
   const [filtedData, setFilterData] = React.useState<Result[]>([]);
-  const [isFullList, setIsFullList] = React.useState<boolean>(true);
   const [loading, setLoading] = React.useState<boolean>(true);
 
   function filter(value: string) {
@@ -23,7 +24,24 @@ export const Home: React.FunctionComponent<Props> = () => {
       return lowerGameName.startsWith(lowerCaseSearchValue);
     });
     setFilterData(newArray);
-    setIsFullList(false);
+    setLoading(false);
+  }
+
+  function sortSearchResults(value: string) {
+    setLoading(true);
+    if (value === 'popularity') {
+      const sorted: Result[] = [...currentData].sort((a, b) => {
+        return b.rating - a.rating;
+      });
+      setCurrentData(sorted);
+    }
+
+    if (value === 'alphabetically') {
+      const sorted: Result[] = [...currentData].sort((a, b) => {
+        return a.name.localeCompare(b.name);
+      });
+      setCurrentData(sorted);
+    }
     setLoading(false);
   }
 
@@ -32,6 +50,16 @@ export const Home: React.FunctionComponent<Props> = () => {
       setLoading(false);
     }, 2000);
   }, [loading]);
+
+  React.useEffect(() => {
+    setCurrentData(localContext.default);
+  }, [localContext]);
+
+  React.useEffect(() => {
+    if (!!filtedData) {
+      setCurrentData(filtedData);
+    }
+  }, [filtedData]);
 
   return (
     <MainContent>
@@ -46,7 +74,21 @@ export const Home: React.FunctionComponent<Props> = () => {
         topDesktop={48}
       />
       <SearchCards handler={filter} />
-      {loading ? <Loader /> : <CardsList cards={isFullList ? localContext.default : filtedData} />}
+      <Select
+        label="Sort by:"
+        options={[
+          {
+            value: 'alphabetically',
+            label: 'Alphabetically',
+          },
+          {
+            value: 'popularity',
+            label: 'Popularity',
+          },
+        ]}
+        handler={sortSearchResults}
+      />
+      {loading ? <Loader /> : <CardsList cards={currentData} />}
     </MainContent>
   );
 };

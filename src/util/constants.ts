@@ -50,3 +50,14 @@ export const mockResponse: Response = {
   },
   nofollow_collections: [],
 };
+
+export const mockOptions = [
+  {
+    value: 'alphabetically',
+    label: 'Alphabetically',
+  },
+  {
+    value: 'popularity',
+    label: 'Popularity',
+  },
+];
