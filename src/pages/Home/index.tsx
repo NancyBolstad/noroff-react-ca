@@ -53,7 +53,7 @@ export const Home: React.FunctionComponent<Props> = () => {
 
   React.useEffect(() => {
     setCurrentData(localContext.default);
-  }, [localContext]);
+  }, [localContext, loading]);
 
   React.useEffect(() => {
     if (!!filtedData) {
