@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 import createFontStyles from '../../util/createFontStyles';
+import Button, { ButtonProps } from '../Button';
 
 export const HeaderWrapper = styled.header`
   width: 100%;
@@ -102,7 +103,7 @@ export const ModeSwitchButton = styled.a`
 `;
 
 export const TogglerSlider = styled.span<{ mode: string }>`
-  width: 2.6rem;
+  width: 2rem;
   height: 2.1rem;
   position: absolute;
   top: 0;
@@ -122,4 +123,34 @@ export const TogglerSlider = styled.span<{ mode: string }>`
     css`
       left: 0;
     `}
+`;
+
+interface MobileMenuButton extends ButtonProps {
+  isOpen: boolean;
+}
+
+export const MobileMenuIcon = styled(Button)`
+  padding: 0;
+  svg {
+    margin: 0;
+  }
+`;
+
+export const MobileMenuWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 4.125rem;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: ${props => props.theme.colors.background};
+  z-index: 999;
+  border-bottom: 2px solid ${props => props.theme.colors.secondary};
+  ${props => createFontStyles(props.theme.fonts.h1)};
+
+  a {
+    margin-top: ${props => props.theme.spacing.xl}rem;
+    color: ${props => props.theme.colors.onBackground};
+  }
 `;

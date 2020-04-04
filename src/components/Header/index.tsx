@@ -2,35 +2,66 @@ import * as React from 'react';
 import {
   HeaderWrapper,
   HeaderNav,
+  HeaderMenuLeft,
   HeaderMenuRight,
   HeaderNavLinkList,
   HeaderNavLink,
   SiteLogo,
   ModeSwitchButton,
   TogglerSlider,
+  MobileMenuIcon,
+  MobileMenuWrapper,
 } from './styles';
-import ThemeWrapper from '../ThemeWrapper';
+//import ThemeWrapper from '../ThemeWrapper';
 import { ContrastContext } from '../../context/Contrast';
 import { Context } from '../../context/GlobalContext';
+import { hamburger, cross } from '../../util/icons';
+import useIsDesktop from '../../hooks/useIsDesktop';
 
 const Header: React.FunctionComponent = () => {
   const { theme, toggleContrast } = React.useContext(ContrastContext);
   const { favorites } = React.useContext(Context);
+  const isDesktop = useIsDesktop();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState<boolean>(false);
+
+  React.useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+
+      return () => {
+        document.body.style.overflow = 'unset';
+      };
+    }
+  }, [isMobileMenuOpen]);
+
   return (
-    <ThemeWrapper>
+    <>
       <HeaderWrapper>
         <HeaderNav>
-          <HeaderNavLinkList>
-            <li>
-              <SiteLogo to="/">RAWG</SiteLogo>
-            </li>
-            <li>
-              <HeaderNavLink to="/favorites">Favorites ({favorites.length})</HeaderNavLink>
-            </li>
-            <li>
-              <HeaderNavLink to="/contact">Contact</HeaderNavLink>
-            </li>
-          </HeaderNavLinkList>
+          <HeaderMenuLeft>
+            <SiteLogo
+              to="/"
+              onClick={e => {
+                if (!isDesktop) {
+                  e.preventDefault();
+                  setIsMobileMenuOpen(false);
+                  window.location.assign('/');
+                }
+              }}
+            >
+              RAWG
+            </SiteLogo>
+            {isDesktop && (
+              <HeaderNavLinkList>
+                <li>
+                  <HeaderNavLink to="/favorites">Favorites ({favorites.length})</HeaderNavLink>
+                </li>
+                <li>
+                  <HeaderNavLink to="/contact">Contact</HeaderNavLink>
+                </li>
+              </HeaderNavLinkList>
+            )}
+          </HeaderMenuLeft>
           <HeaderMenuRight>
             <ModeSwitchButton onClick={() => toggleContrast()}>
               <span role="img" aria-label="default mode">
@@ -41,10 +72,46 @@ const Header: React.FunctionComponent = () => {
               </span>
               <TogglerSlider mode={theme} />
             </ModeSwitchButton>
+            {!isDesktop && (
+              <MobileMenuIcon
+                variant="primary"
+                size="small"
+                onClick={e => {
+                  e.preventDefault();
+                  setIsMobileMenuOpen(!isMobileMenuOpen);
+                }}
+              >
+                {isMobileMenuOpen ? cross : hamburger}
+              </MobileMenuIcon>
+            )}
           </HeaderMenuRight>
         </HeaderNav>
       </HeaderWrapper>
-    </ThemeWrapper>
+      {!isDesktop && isMobileMenuOpen && (
+        <MobileMenuWrapper>
+          <HeaderNavLink
+            to="/favorites"
+            onClick={e => {
+              e.preventDefault();
+              setIsMobileMenuOpen(false);
+              window.location.assign('/favorites');
+            }}
+          >
+            Favorites ({favorites.length})
+          </HeaderNavLink>
+          <HeaderNavLink
+            to="/contact"
+            onClick={e => {
+              e.preventDefault();
+              setIsMobileMenuOpen(false);
+              window.location.assign('/contact');
+            }}
+          >
+            Contact
+          </HeaderNavLink>
+        </MobileMenuWrapper>
+      )}
+    </>
   );
 };
 
