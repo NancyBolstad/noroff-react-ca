@@ -29,6 +29,7 @@ export const Home: React.FunctionComponent<Props> = () => {
   }
 
   function sortSearchResults(value: string) {
+    setLoading(true);
     if (value === 'popularity') {
       const sorted: Result[] = [...currentData].sort((a, b) => {
         return b.rating - a.rating;
@@ -42,6 +43,7 @@ export const Home: React.FunctionComponent<Props> = () => {
       });
       setCurrentData(sorted);
     }
+    setLoading(false);
   }
 
   React.useEffect(() => {
