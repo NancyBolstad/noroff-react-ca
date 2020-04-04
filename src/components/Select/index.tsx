@@ -33,7 +33,11 @@ const Select: React.FunctionComponent<Props> = ({
             {...restProps}
             onChange={(e: any) => {
               e.preventDefault();
-              if (!!handler) handler(e.target.value);
+              if (!!handler) handler(e.currentTarget.value);
+            }}
+            onClick={(e: any) => {
+              e.preventDefault();
+              if (!!handler) handler(e.currentTarget.value);
             }}
           >
             {children}

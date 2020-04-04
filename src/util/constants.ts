@@ -53,8 +53,8 @@ export const mockResponse: Response = {
 
 export const mockOptions = [
   {
-    value: 'newest',
-    label: 'Newest',
+    value: 'alphabetically',
+    label: 'Alphabetically',
   },
   {
     value: 'popularity',
