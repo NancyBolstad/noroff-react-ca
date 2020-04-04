@@ -6,6 +6,8 @@ import { Result } from '../../types/data';
 import SearchCards from '../../components/SearchCards/SearchCards';
 import CardsList from '../../components/CardsList/';
 import Loader from '../../components/Loader';
+import Select from '../../components/Select';
+import { mockOptions } from '../../util/constants';
 
 interface Props {}
 
@@ -27,6 +29,10 @@ export const Home: React.FunctionComponent<Props> = () => {
     setLoading(false);
   }
 
+  function sortSearchResults(value: string) {
+    console.log(value);
+  }
+
   React.useEffect(() => {
     setTimeout(function() {
       setLoading(false);
@@ -46,6 +52,7 @@ export const Home: React.FunctionComponent<Props> = () => {
         topDesktop={48}
       />
       <SearchCards handler={filter} />
+      <Select label="Sort by:" required={true} options={mockOptions} handler={sortSearchResults} />
       {loading ? <Loader /> : <CardsList cards={isFullList ? localContext.default : filtedData} />}
     </MainContent>
   );
