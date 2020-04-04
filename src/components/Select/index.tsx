@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { solidArrow } from '../../util/icons';
 import { Wrapper, SelectFieldWrapper, Label, Arrow, StyledSelect } from './styles';
+import Typography from '../Typography';
 
 export interface Option {
   label?: string;
@@ -26,7 +27,7 @@ const Select: React.FunctionComponent<Props> = ({
     <Wrapper>
       <SelectFieldWrapper>
         <Label>
-          {label}
+          <Typography content={label} variant="h4" element="span" isPrimaryColor />
           <Arrow>{solidArrow}</Arrow>
           <StyledSelect
             required={required}
