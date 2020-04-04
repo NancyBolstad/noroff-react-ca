@@ -7,7 +7,6 @@ import SearchCards from '../../components/SearchCards/SearchCards';
 import CardsList from '../../components/CardsList/';
 import Loader from '../../components/Loader';
 import Select from '../../components/Select';
-import { mockOptions } from '../../util/constants';
 
 interface Props {}
 
@@ -76,7 +75,20 @@ export const Home: React.FunctionComponent<Props> = () => {
         topDesktop={48}
       />
       <SearchCards handler={filter} />
-      <Select label="Sort by:" options={mockOptions} handler={sortSearchResults} />
+      <Select
+        label="Sort by:"
+        options={[
+          {
+            value: 'alphabetically',
+            label: 'Alphabetically',
+          },
+          {
+            value: 'popularity',
+            label: 'Popularity',
+          },
+        ]}
+        handler={sortSearchResults}
+      />
       {loading ? <Loader /> : <CardsList cards={currentData} />}
     </MainContent>
   );
