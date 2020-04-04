@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
+import createFontStyles from '../../util/createFontStyles';
 
 export const HeaderWrapper = styled.header`
   width: 100%;
@@ -14,7 +15,7 @@ export const HeaderNav = styled.nav`
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  padding: 0 ${props => props.theme.spacing.s}rem;
+  padding: ${props => props.theme.spacing.s}rem;
 
   @media (min-width: ${props => props.theme.mediaQueries.large}px) {
     padding: 0 ${props => props.theme.spacing.l}rem;
@@ -40,10 +41,9 @@ export const HeaderNavLinkList = styled.ul`
 
 export const HeaderNavLink = styled(Link)`
   color: ${props => props.theme.colors.onSecondary};
-  font-size: 1.25rem;
-  font-weight: bold;
   margin-right: ${props => props.theme.spacing.s}rem;
   text-decoration: none;
+  ${props => createFontStyles(props.theme.fonts.h3)};
 
   &:hover {
     opacity: 0.8;

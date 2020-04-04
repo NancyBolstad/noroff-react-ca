@@ -5,7 +5,6 @@ import { Context } from '../../context/GlobalContext';
 import { Result } from '../../types/data';
 import SearchCards from '../../components/SearchCards/SearchCards';
 import CardsList from '../../components/CardsList/';
-import useIsDesktop from '../../hooks/useIsDesktop';
 import Loader from '../../components/Loader';
 
 interface Props {}
@@ -38,7 +37,7 @@ export const Home: React.FunctionComponent<Props> = () => {
     <MainContent>
       <Typography
         element="h1"
-        variant={useIsDesktop() ? 'h1' : 'h2'}
+        variant="h1"
         content="Search RAWG Video Games"
         isPrimaryColor
         bottom={32}
