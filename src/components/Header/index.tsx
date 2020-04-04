@@ -12,7 +12,6 @@ import {
   MobileMenuIcon,
   MobileMenuWrapper,
 } from './styles';
-//import ThemeWrapper from '../ThemeWrapper';
 import { ContrastContext } from '../../context/Contrast';
 import { Context } from '../../context/GlobalContext';
 import { hamburger, cross } from '../../util/icons';
