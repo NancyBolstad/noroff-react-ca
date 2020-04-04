@@ -44,11 +44,13 @@ export const HeaderNavLink = styled(Link)`
   font-weight: bold;
   margin-right: ${props => props.theme.spacing.s}rem;
   text-decoration: none;
+  display: flex;
+  justify-items: center;
+  align-items: center;
 
   &:hover {
     opacity: 0.8;
   }
-
   @media (min-width: ${props => props.theme.mediaQueries.large}px) {
     padding: 0.5rem 1rem;
   }
