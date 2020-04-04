@@ -140,7 +140,6 @@ export const MobileMenuWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: ${props => props.theme.colors.primary};
   margin-top: 4.125rem;
   position: fixed;
   width: 100vw;
@@ -152,5 +151,6 @@ export const MobileMenuWrapper = styled.div`
 
   a {
     margin-top: ${props => props.theme.spacing.xl}rem;
+    color: ${props => props.theme.colors.onBackground};
   }
 `;
