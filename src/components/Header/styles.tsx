@@ -7,6 +7,7 @@ export const HeaderWrapper = styled.header`
   background: ${props => props.theme.colors.secondary};
   color: ${props => props.theme.colors.onSecondary};
   position: fixed;
+  z-index: 999;
 `;
 
 export const HeaderNav = styled.nav`
