@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 import createFontStyles from '../../util/createFontStyles';
 
-export const SectionWrapper = styled.div`
+export const Wrapper = styled.div`
   display: flex;
   width: 100%;
   margin-bottom: ${props => props.theme.spacing.s}rem;
 `;
 
-export const Wrapper = styled.div`
+export const SelectFieldWrapper = styled.div`
   position: relative;
   transition: opacity 0.1s ease-in-out;
   display: flex;

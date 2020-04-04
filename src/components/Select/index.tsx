@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { solidArrow } from '../../util/icons';
-import { SectionWrapper, Wrapper, Label, Arrow, StyledSelect } from './styles';
+import { Wrapper, SelectFieldWrapper, Label, Arrow, StyledSelect } from './styles';
 
 export interface Option {
   label?: string;
@@ -23,8 +23,8 @@ const Select: React.FunctionComponent<Props> = ({
   ...restProps
 }) => {
   return (
-    <SectionWrapper>
-      <Wrapper>
+    <Wrapper>
+      <SelectFieldWrapper>
         <Label>
           {label}
           <Arrow>{solidArrow}</Arrow>
@@ -48,8 +48,8 @@ const Select: React.FunctionComponent<Props> = ({
             ))}
           </StyledSelect>
         </Label>
-      </Wrapper>
-    </SectionWrapper>
+      </SelectFieldWrapper>
+    </Wrapper>
   );
 };
 
