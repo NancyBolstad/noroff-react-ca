@@ -7,6 +7,7 @@ import SearchCards from '../../components/SearchCards/SearchCards';
 import CardsList from '../../components/CardsList/';
 import Loader from '../../components/Loader';
 import Select from '../../components/Select';
+import validateUserInput from '../../util/validateUserInput';
 
 interface Props {}
 
@@ -15,6 +16,7 @@ export const Home: React.FunctionComponent<Props> = () => {
   const [currentData, setCurrentData] = React.useState<Result[]>([]);
   const [filtedData, setFilterData] = React.useState<Result[]>([]);
   const [loading, setLoading] = React.useState<boolean>(true);
+  const [message, setMessage] = React.useState<string>();
 
   function filter(value: string) {
     setLoading(true);
@@ -24,6 +26,11 @@ export const Home: React.FunctionComponent<Props> = () => {
       return lowerGameName.startsWith(lowerCaseSearchValue);
     });
     setFilterData(newArray);
+    if (validateUserInput(value)) {
+      setMessage(`Find ${newArray.length} cards for ${value}`);
+    } else {
+      setMessage('');
+    }
     setLoading(false);
   }
 
@@ -72,13 +79,16 @@ export const Home: React.FunctionComponent<Props> = () => {
         element="h1"
         variant="h1"
         content="Search RAWG Video Games"
-        isPrimaryColor
         bottom={32}
         top={32}
         bottomDesktop={48}
         topDesktop={48}
+        isPrimaryColor
       />
       <SearchCards handler={filter} />
+      {!!message && message.length > 0 && (
+        <Typography variant="b2" element="p" content={message} isPrimaryColor />
+      )}
       {!loading && (filtedData.length > 1 || currentData.length > 1) && (
         <Select
           label="Sort by:"
