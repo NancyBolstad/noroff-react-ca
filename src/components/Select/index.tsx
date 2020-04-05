@@ -6,6 +6,7 @@ import Typography from '../Typography';
 export interface Option {
   label?: string;
   value?: string;
+  isSelected?: boolean;
 }
 
 interface Props extends React.InputHTMLAttributes<HTMLSelectElement> {
@@ -43,7 +44,7 @@ const Select: React.FunctionComponent<Props> = ({
           >
             {children}
             {(options || []).map(option => (
-              <option key={option.value} value={option.value}>
+              <option key={option.value} value={option.value} selected={option.isSelected}>
                 {option.label}
               </option>
             ))}
