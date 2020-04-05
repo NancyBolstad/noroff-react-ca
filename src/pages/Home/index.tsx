@@ -27,18 +27,23 @@ export const Home: React.FunctionComponent<Props> = () => {
     setLoading(false);
   }
 
-  function sortSearchResults(value: string) {
+  function sortSearchResults(criteria: string) {
     setLoading(true);
-    if (value === 'popularity') {
+
+    if (criteria === 'default') {
+      setCurrentData(filtedData.length > 0 ? filtedData : localContext.default);
+    }
+
+    if (criteria === 'alphabetically') {
       const sorted: Result[] = [...currentData].sort((a, b) => {
-        return b.rating - a.rating;
+        return a.name.localeCompare(b.name);
       });
       setCurrentData(sorted);
     }
 
-    if (value === 'alphabetically') {
+    if (criteria === 'popularity') {
       const sorted: Result[] = [...currentData].sort((a, b) => {
-        return a.name.localeCompare(b.name);
+        return b.rating - a.rating;
       });
       setCurrentData(sorted);
     }
@@ -74,20 +79,27 @@ export const Home: React.FunctionComponent<Props> = () => {
         topDesktop={48}
       />
       <SearchCards handler={filter} />
-      <Select
-        label="Sort by:"
-        options={[
-          {
-            value: 'alphabetically',
-            label: 'Alphabetically',
-          },
-          {
-            value: 'popularity',
-            label: 'Popularity',
-          },
-        ]}
-        handler={sortSearchResults}
-      />
+      {!loading && (filtedData.length > 1 || currentData.length > 1) && (
+        <Select
+          label="Sort by:"
+          options={[
+            {
+              value: 'default',
+              label: 'Default',
+              isSelected: true,
+            },
+            {
+              value: 'alphabetically',
+              label: 'Alphabetically',
+            },
+            {
+              value: 'popularity',
+              label: 'Popularity',
+            },
+          ]}
+          handler={sortSearchResults}
+        />
+      )}
       {loading ? <Loader /> : <CardsList cards={currentData} />}
     </MainContent>
   );
