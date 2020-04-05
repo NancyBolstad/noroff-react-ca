@@ -7,15 +7,23 @@ import {
   InfoItemTitleWrapper,
 } from './styles';
 import Typography from '../Typography';
-import mockCheckBoxList from './data';
 
-interface Props {}
+interface InfoBox {
+  title: string;
+  content: string;
+}
 
-export const InfoList: React.FC<Props> = () => {
-  const { sectionTitle, list } = mockCheckBoxList;
+export interface InfoListProps {
+  sectionTitle?: string;
+  list?: InfoBox[];
+}
+
+export const InfoList: React.FunctionComponent<InfoListProps> = ({ sectionTitle, list }) => {
   return (
     <InfoListWrapper>
-      <Typography element="h1" variant="h1" top={32} bottom={32} content={sectionTitle} />
+      {!!sectionTitle && (
+        <Typography element="h2" variant="h2" top={32} bottom={32} content={sectionTitle} />
+      )}
       <InfoListFlexParent>
         {(list || []).map((box, index) => (
           <InfoItemFlexChild key={index}>
