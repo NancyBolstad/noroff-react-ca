@@ -1,7 +1,7 @@
 import pixelsToRem from '../pixelsToRem';
 
 describe('pixelsToRem', () => {
-  it('should return 1', () => {
-    expect(pixelsToRem(16)).toStrictEqual(1);
+  it('16px should be equal to 1 rem', () => {
+    expect(pixelsToRem(16)).toBe(1);
   });
 });
