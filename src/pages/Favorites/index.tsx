@@ -1,8 +1,8 @@
 import * as React from 'react';
 import HomeContent from '../../components/MainContent';
 import { Context } from '../../context/GlobalContext';
-import InfoList from '../../components/InfoList';
 import Slider from '../../components/Slider/';
+import Banner from '../../components/Banner';
 
 interface Props {}
 
@@ -11,7 +11,12 @@ export const Favorites: React.FunctionComponent<Props> = () => {
   return (
     <HomeContent>
       {favorites.length < 1 ? (
-        <InfoList sectionTitle="You don't have any saved products" />
+        <Banner
+          title="Favorites"
+          content="You don't have any saved favorites."
+          buttonText="Select from cards list"
+          redirectLink="/"
+        />
       ) : (
         <Slider slides={favorites} />
       )}
