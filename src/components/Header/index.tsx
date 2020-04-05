@@ -43,8 +43,8 @@ const Header: React.FunctionComponent = () => {
               onClick={e => {
                 if (!isDesktop) {
                   e.preventDefault();
-                  setIsMobileMenuOpen(false);
                   window.location.assign('/');
+                  setIsMobileMenuOpen(false);
                 }
               }}
             >
@@ -92,8 +92,8 @@ const Header: React.FunctionComponent = () => {
             to="/favorites"
             onClick={e => {
               e.preventDefault();
-              setIsMobileMenuOpen(false);
               window.location.assign('/favorites');
+              setIsMobileMenuOpen(false);
             }}
           >
             Favorites ({favorites.length})
@@ -102,8 +102,8 @@ const Header: React.FunctionComponent = () => {
             to="/contact"
             onClick={e => {
               e.preventDefault();
-              setIsMobileMenuOpen(false);
               window.location.assign('/contact');
+              setIsMobileMenuOpen(false);
             }}
           >
             Contact

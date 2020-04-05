@@ -7,6 +7,7 @@ import SearchCards from '../../components/SearchCards/SearchCards';
 import CardsList from '../../components/CardsList/';
 import Loader from '../../components/Loader';
 import Select from '../../components/Select';
+import validateUserInput from '../../util/validateUserInput';
 
 interface Props {}
 
@@ -15,6 +16,7 @@ export const Home: React.FunctionComponent<Props> = () => {
   const [currentData, setCurrentData] = React.useState<Result[]>([]);
   const [filtedData, setFilterData] = React.useState<Result[]>([]);
   const [loading, setLoading] = React.useState<boolean>(true);
+  const [message, setMessage] = React.useState<string>();
 
   function filter(value: string) {
     setLoading(true);
@@ -24,21 +26,31 @@ export const Home: React.FunctionComponent<Props> = () => {
       return lowerGameName.startsWith(lowerCaseSearchValue);
     });
     setFilterData(newArray);
+    if (validateUserInput(value)) {
+      setMessage(`Find ${newArray.length} cards for ${value}`);
+    } else {
+      setMessage('');
+    }
     setLoading(false);
   }
 
-  function sortSearchResults(value: string) {
+  function sortSearchResults(criteria: string) {
     setLoading(true);
-    if (value === 'popularity') {
+
+    if (criteria === 'default') {
+      setCurrentData(filtedData.length > 0 ? filtedData : localContext.default);
+    }
+
+    if (criteria === 'alphabetically') {
       const sorted: Result[] = [...currentData].sort((a, b) => {
-        return b.rating - a.rating;
+        return a.name.localeCompare(b.name);
       });
       setCurrentData(sorted);
     }
 
-    if (value === 'alphabetically') {
+    if (criteria === 'popularity') {
       const sorted: Result[] = [...currentData].sort((a, b) => {
-        return a.name.localeCompare(b.name);
+        return b.rating - a.rating;
       });
       setCurrentData(sorted);
     }
@@ -67,27 +79,37 @@ export const Home: React.FunctionComponent<Props> = () => {
         element="h1"
         variant="h1"
         content="Search RAWG Video Games"
-        isPrimaryColor
         bottom={32}
         top={32}
         bottomDesktop={48}
         topDesktop={48}
+        isPrimaryColor
       />
       <SearchCards handler={filter} />
-      <Select
-        label="Sort by:"
-        options={[
-          {
-            value: 'alphabetically',
-            label: 'Alphabetically',
-          },
-          {
-            value: 'popularity',
-            label: 'Popularity',
-          },
-        ]}
-        handler={sortSearchResults}
-      />
+      {!!message && message.length > 0 && (
+        <Typography variant="b2" element="p" content={message} isPrimaryColor />
+      )}
+      {!loading && (filtedData.length > 1 || currentData.length > 1) && (
+        <Select
+          label="Sort by:"
+          options={[
+            {
+              value: 'default',
+              label: 'Default',
+              isSelected: true,
+            },
+            {
+              value: 'alphabetically',
+              label: 'Alphabetically',
+            },
+            {
+              value: 'popularity',
+              label: 'Popularity',
+            },
+          ]}
+          handler={sortSearchResults}
+        />
+      )}
       {loading ? <Loader /> : <CardsList cards={currentData} />}
     </MainContent>
   );
