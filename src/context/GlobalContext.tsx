@@ -1,7 +1,10 @@
 import React from 'react';
-import { Root, Result } from '../types/data';
-import { API_BASE_URL } from '../util/constants';
-import { favoriteCardsReducer, FavoriteActions } from '../reducer/favoriteCardsReducer';
+import useApi from '../hooks/useApi';
+import { FavoriteActions, favoriteCardsReducer } from '../reducer/favoriteCardsReducer';
+import { Result, Root } from '../types/data';
+import { API_BASE_URL, mockResponse, FAVORITES_KEY } from '../util/constants';
+import isBrowser from '../util/isBrowser';
+import Storage from '../util/storage';
 
 interface Props {}
 
@@ -18,31 +21,32 @@ export const Context = React.createContext<GlobalDataProps>({
 });
 
 export const GlobalContext: React.FunctionComponent<Props> = ({ children }) => {
-  const [data, setData] = React.useState<Result[]>([]);
-  const initializeState: Result[] = [];
+  const { data } = useApi<Root>({
+    endpoint: API_BASE_URL,
+    fetchOnMount: true,
+    initialData: mockResponse,
+  });
+  const [localData, setLocalData] = React.useState<Result[]>(() => {
+    const storage = new Storage();
+    const localFavorites = storage.get(FAVORITES_KEY);
 
-  const [state, dispatch] = React.useReducer(favoriteCardsReducer, initializeState);
+    return localFavorites !== null ? JSON.parse(localFavorites) : [];
+  });
 
-  async function getAllCards() {
-    try {
-      const response = await fetch(API_BASE_URL);
-      const data: Root = await response.json();
-      setData(data.results);
-
-      return data;
-    } catch (err) {
-      throw err;
-    }
-  }
+  const [state, dispatch] = React.useReducer(favoriteCardsReducer, localData);
 
   React.useEffect(() => {
-    getAllCards();
-  }, []);
+    if (isBrowser()) {
+      const storage = new Storage();
+      storage.setSerialize(FAVORITES_KEY, state);
+      setLocalData(state);
+    }
+  }, [state]);
 
   return (
     <Context.Provider
       value={{
-        default: data,
+        default: data.results,
         favorites: state,
         dispatch: dispatch,
       }}

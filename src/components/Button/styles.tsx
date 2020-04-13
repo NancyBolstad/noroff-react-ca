@@ -8,8 +8,8 @@ export const Button = styled.button<ButtonProps>`
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  text-decoration: none;
   width: fit-content;
+  text-decoration: none;
   border: 2px solid transparent;
   transition: border-color 0.15s ease-in-out, background-color 0.15s ease-in-out;
   &:disabled {
@@ -27,8 +27,7 @@ export const Button = styled.button<ButtonProps>`
   ${props =>
     props.size === 'small' &&
     css`
-      height: 40px;
-      min-width: 75px;
+      width: 100%;
       padding: 0 32px;
       ${createFontStyles(props.theme.fonts.b2)};
 
@@ -39,28 +38,15 @@ export const Button = styled.button<ButtonProps>`
   ${props =>
     props.size === 'medium' &&
     css`
-      height: 42px;
-      width: 100%;
-      padding: 0 20px;
+      padding: 10px 20px;
       ${createFontStyles(props.theme.fonts.b2)};
-
-      @media all and (min-width: ${props => props.theme.mediaQueries.small}px) {
-        width: 160px;
-      }
     `};
   ${props =>
     props.size === 'large' &&
     css`
-      height: 45px;
-      min-width: 250px;
-      padding-left: 75px;
-      padding-right: 75px;
+      padding: 10px 75px;
       border-radius: 35px;
       ${createFontStyles(props.theme.fonts.h3)};
-
-      @media all and (min-width: ${props => props.theme.mediaQueries.small}px) {
-        height: 50px;
-      }
     `};
   ${props =>
     props.variant === 'primary' &&

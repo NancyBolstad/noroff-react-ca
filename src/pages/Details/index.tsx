@@ -3,31 +3,26 @@ import { useParams } from 'react-router-dom';
 import MainContent from '../../components/MainContent';
 import CardDetails from '../../components/CardDetails';
 import { Root } from '../../types/details';
-import { API_BASE_URL } from '../../util/constants';
+import { API_BASE_URL, mockCardDetails } from '../../util/constants';
+import useApi from '../../hooks/useApi';
+import Loader from '../../components/Loader';
 
 interface Props {}
 
 export const Details: React.FunctionComponent<Props> = () => {
-  const [data, setData] = React.useState<Root>();
   let { id } = useParams();
+  const { data, loading } = useApi<Root>({
+    endpoint: API_BASE_URL,
+    queryParams: id,
+    fetchOnMount: true,
+    initialData: mockCardDetails,
+  });
 
-  React.useEffect(() => {
-    async function getAllCards() {
-      try {
-        const response = await fetch(`${API_BASE_URL}/${id}`);
-        const data: Root = await response.json();
-        setData(data);
-        return data;
-      } catch (err) {
-        throw err;
-      }
-    }
-    getAllCards();
-  }, [id]);
   return (
     <>
       <MainContent>
-        {!!data && (
+        {loading && <Loader />}
+        {!!data && !loading && (
           <CardDetails
             title={data.name}
             image={data.background_image}

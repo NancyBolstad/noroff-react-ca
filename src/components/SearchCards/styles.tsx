@@ -20,8 +20,9 @@ export const SearchFormWrapper = styled.div`
     }
   }
   input[type='text'] {
-    border: 2px solid  ${props => props.theme.colors.primaryVariant};
-    background:  ${props => props.theme.colors.surface};
+    border: 2px solid ${props => props.theme.colors.primaryVariant};
+    background: ${props => props.theme.colors.surface};
+    color: ${props => props.theme.colors.primaryVariant};
     white-space: nowrap;
     padding: 0.55rem 0.75rem;
     font-size: 1.1em;
@@ -30,10 +31,14 @@ export const SearchFormWrapper = styled.div`
     height: 4rem;
     flex-grow: 1;
     width: 40vw;
+
+    ::placeholder {
+      color: ${props => props.theme.colors.primaryVariant};
+    }
   }
   button[type='submit'] {
-    background-color: ${props => props.theme.colors.secondaryVariant};
-    color: ${props => props.theme.colors.background};
+    background-color: ${props => props.theme.colors.secondary};
+    color: ${props => props.theme.colors.onSecondary};
     border: none;
     cursor: pointer;
     flex-grow: 1;
@@ -41,7 +46,7 @@ export const SearchFormWrapper = styled.div`
     svg {
       height: 1.5rem;
       width: 1.5rem;
-      fill: ${props => props.theme.colors.background};
+      fill: ${props => props.theme.colors.onSecondary};
     }
     @media screen and (min-width: 1080px) {
       width: 3rem;
@@ -49,8 +54,9 @@ export const SearchFormWrapper = styled.div`
   }
   input[type='text']:focus {
     background: #ffffff;
+    color: black;
     outline: none;
-    border: 2px solid  ${props => props.theme.colors.secondaryVariant};
+    border: 1px solid ${props => props.theme.colors.secondary};
   }
   button[type='submit']:focus {
     outline: none;

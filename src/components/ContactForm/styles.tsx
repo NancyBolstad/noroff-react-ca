@@ -53,6 +53,7 @@ export const StyledInput = styled.input`
   outline: none;
   transition: border-color 0.1s ease-in-out;
   ${props => createFontStyles(props.theme.fonts.b1)};
+  color: ${props => props.theme.colors.primaryVariant};
 
   &::placeholder {
     color: ${props => props.theme.colors.primaryVariant};
@@ -81,6 +82,7 @@ export const StyledTextArea = styled.textarea`
   outline: none;
   transition: border-color 0.1s ease-in-out;
   ${props => createFontStyles(props.theme.fonts.b1)};
+  color: ${props => props.theme.colors.primaryVariant};
 
   &::placeholder {
     color: ${props => props.theme.colors.primaryVariant};

@@ -10,6 +10,8 @@ export const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     overflow-x:hidden;
     color: ${props => props.theme.colors.onBackground};
+    background:${props => props.theme.colors.background};
+    transition: background-color 0.5s, color 0.5s;
     ${props => createFontStyles(props.theme.fonts.b1)}
   }
   * {
